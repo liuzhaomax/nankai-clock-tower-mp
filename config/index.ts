@@ -1,9 +1,12 @@
 import { defineConfig, type UserConfigExport } from '@tarojs/cli'
 
+// @ts-ignore
 import devConfig from './dev'
+// @ts-ignore
 import prodConfig from './prod'
 
 // https://taro-docs.jd.com/docs/next/config#defineconfig-辅助函数
+// @ts-ignore
 export default defineConfig<'vite'>(async (merge, { command, mode }) => {
   const baseConfig: UserConfigExport<'vite'> = {
     projectName: 'nct',

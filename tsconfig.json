@@ -51,7 +51,7 @@
     "allowJs": true,
     "typeRoots": ["node_modules/@types"]
   },
-  "include": ["./src", "./types", "./config"],
-  "exclude": ["node_modules", "dist", ".swc"],
+  "include": ["./src", "./types"],
+  "exclude": ["node_modules", "dist", ".swc", "./config"],
   "compileOnSave": false
 }
