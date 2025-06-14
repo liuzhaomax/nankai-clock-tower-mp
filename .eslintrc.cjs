@@ -50,6 +50,12 @@ module.exports = {
       },
     ],
     'unicorn/no-null': 'off',
+    'import/no-unresolved': [
+      'error',
+      {
+        ignore: ['^@/', '^~/'], // 忽略这些前缀的警告
+      },
+    ],
   },
   overrides: [
     // React

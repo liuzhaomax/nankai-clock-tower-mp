@@ -13,8 +13,7 @@
     "baseUrl": ".",
     "paths": {
       // TS5090 leading './'
-      "@/*": ["./src/*"],
-      "@assets/*": ["./src/assets/*"]
+      "@/*": ["./src/*"]
     },
 
     // Code Quality and Strictness
@@ -50,7 +49,7 @@
     "preserveConstEnums": true,
     "experimentalDecorators": true,
     "allowJs": true,
-    "typeRoots": ["node_modules/@types"]
+    "typeRoots": ["node_modules/@types", "./types"]
   },
   "include": ["./src", "./types"],
   "exclude": ["node_modules", "dist", ".swc", "./config"],
