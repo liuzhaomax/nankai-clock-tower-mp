@@ -1,0 +1,14 @@
+.index {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+
+text {
+  font-family: sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+}

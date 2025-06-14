@@ -1,4 +1,5 @@
 import { defineConfig, type UserConfigExport } from '@tarojs/cli'
+import path from 'path'
 
 // @ts-ignore
 import devConfig from './dev'
@@ -28,6 +29,10 @@ export default defineConfig<'vite'>(async (merge, { command, mode }) => {
     },
     framework: 'react',
     compiler: 'vite',
+    alias: {
+      '@': path.resolve(__dirname, '..', 'src'),
+      '@assets': path.resolve(__dirname, '..', 'src/assets'),
+    },
     mini: {
       postcss: {
         pxtransform: {
