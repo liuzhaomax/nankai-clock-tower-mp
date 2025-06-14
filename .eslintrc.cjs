@@ -65,6 +65,7 @@ module.exports = {
       ],
       rules: {
         'react-hooks/exhaustive-deps': 'off',
+        '@typescript-eslint/quotes': ['error', 'single'], // 强制单引号
         'import/order': [
           'warn',
           {
@@ -115,6 +116,7 @@ module.exports = {
       plugins: ['@typescript-eslint', 'import', 'sonarjs', 'unicorn'],
       parser: '@typescript-eslint/parser',
       rules: {
+        '@typescript-eslint/quotes': ['error', 'single'], // 强制单引号
         'import/order': [
           'warn',
           {
