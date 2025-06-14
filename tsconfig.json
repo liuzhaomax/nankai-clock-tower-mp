@@ -37,7 +37,7 @@
     "sourceMap": true,
     "useDefineForClassFields": true,
     "types": ["vitest"],
-//    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    //    "plugins": [{ "name": "typescript-plugin-css-modules" }],
 
     // Additional
     "isolatedModules": true,
@@ -49,9 +49,7 @@
     "preserveConstEnums": true,
     "experimentalDecorators": true,
     "allowJs": true,
-    "typeRoots": [
-      "node_modules/@types"
-    ]
+    "typeRoots": ["node_modules/@types"]
   },
   "include": ["./src", "./types", "./config"],
   "exclude": ["node_modules", "dist", ".swc"],
