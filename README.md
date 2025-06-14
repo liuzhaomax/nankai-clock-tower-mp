@@ -12,8 +12,6 @@
 ? 请选择模板 默认模板
 
 TODO：
-+ lint
-+ lint fix auto format
 + router
 + navi
 + UI
