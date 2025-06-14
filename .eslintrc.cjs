@@ -65,6 +65,7 @@ module.exports = {
       ],
       rules: {
         'react-hooks/exhaustive-deps': 'off',
+        quotes: ['error', 'single'],
         'import/order': [
           'warn',
           {
@@ -115,7 +116,6 @@ module.exports = {
       plugins: ['@typescript-eslint', 'import', 'sonarjs', 'unicorn'],
       parser: '@typescript-eslint/parser',
       rules: {
-        quotes: ['error', 'single'],
         'import/order': [
           'warn',
           {
