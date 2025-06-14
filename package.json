@@ -35,11 +35,11 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,cjs}": [
-      "prettier --staged",
+      "pretty-quick --staged",
       "eslint --fix"
     ],
     "*.{css,scss,html,json}": [
-      "prettier --staged"
+      "pretty-quick --staged"
     ]
   },
   "browserslist": [
