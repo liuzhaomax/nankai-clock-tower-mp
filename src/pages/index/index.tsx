@@ -1,7 +1,7 @@
 import { View, Text, Image } from '@tarojs/components'
 import { useLoad } from '@tarojs/taro'
-import styles from './index.scss'
 import bjx from '../../assets/img/jx.jpg'
+import styles from './index.scss'
 
 const Index = () => {
   useLoad(() => {

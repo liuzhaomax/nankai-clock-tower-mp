@@ -12,7 +12,6 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      // TS5090 leading './'
       "@/*": ["src/*"]
     },
 
