@@ -13,7 +13,7 @@
     "baseUrl": ".",
     "paths": {
       // TS5090 leading './'
-      "@/*": ["./src/*"]
+      "@/*": ["src/*"]
     },
 
     // Code Quality and Strictness
