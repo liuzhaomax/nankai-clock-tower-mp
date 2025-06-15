@@ -10,6 +10,8 @@ declare module '*.less'
 declare module '*.scss'
 declare module '*.sass'
 declare module '*.styl'
+declare module '*.ts'
+declare module '*.tsx'
 
 declare namespace NodeJS {
   interface ProcessEnv {

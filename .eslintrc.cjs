@@ -56,6 +56,7 @@ module.exports = {
         ignore: ['^@/', '^~/'], // 忽略这些前缀的警告
       },
     ],
+    'import/namespace': 'off',
   },
   overrides: [
     // React
