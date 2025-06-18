@@ -35,7 +35,8 @@
     "resolveJsonModule": true,
     "sourceMap": true,
     "useDefineForClassFields": true,
-    "types": ["vitest"],
+    "types": ["node"],
+    //    "types": ["vitest"],
     //    "plugins": [{ "name": "typescript-plugin-css-modules" }],
 
     // Additional
