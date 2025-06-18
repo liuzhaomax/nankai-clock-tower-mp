@@ -1,6 +1,9 @@
-import type { UserConfigExport } from '@tarojs/cli'
-
-export default {
+module.exports = {
+  env: {
+    NODE_ENV: '"production"'
+  },
+  defineConstants: {
+  },
   mini: {},
   h5: {
     /**
@@ -14,6 +17,7 @@ export default {
     //    */
     //   chain.plugin('analyzer')
     //     .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin, [])
+
     //   /**
     //    * 如果 h5 端首屏加载时间过长，可以使用 prerender-spa-plugin 插件预加载首页。
     //    * @docs https://github.com/chrisvfritz/prerender-spa-plugin
@@ -29,5 +33,5 @@ export default {
     //       postProcess: (context) => ({ ...context, outputPath: path.join(staticDir, 'index.html') })
     //     }))
     // }
-  },
-} satisfies UserConfigExport<'vite'>
+  }
+}
