@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "description": "南开钟楼",
+  "author": "LIU Zhao",
+  "license": "Apache-2.0",
   "templateInfo": {
     "name": "react-NutUI",
     "typescript": true,
@@ -10,6 +12,8 @@
     "framework": "React"
   },
   "scripts": {
+    "start": "npm run dev:weapp",
+    "build": "taro build --type weapp",
     "build:weapp": "taro build --type weapp",
     "build:swan": "taro build --type swan",
     "build:alipay": "taro build --type alipay",
@@ -27,15 +31,26 @@
     "dev:rn": "npm run build:rn -- --watch",
     "dev:qq": "npm run build:qq -- --watch",
     "dev:jd": "npm run build:jd -- --watch",
-    "dev:quickapp": "npm run build:quickapp -- --watch"
+    "dev:quickapp": "npm run build:quickapp -- --watch",
+    "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint",
+    "lint:fix": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint --fix",
+    "lint:ls": "git add . && lint-staged --verbose",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,cjs}": [
+      "pretty-quick --staged",
+      "eslint --fix --quiet"
+    ],
+    "*.{css,scss,html,json}": [
+      "pretty-quick --staged"
+    ]
   },
   "browserslist": [
     "last 3 versions",
     "Android >= 4.1",
     "ios >= 8"
   ],
-  "author": "",
-  "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.7.7",
     "@tarojs/components": "3.6.36",

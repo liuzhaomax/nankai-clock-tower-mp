@@ -1,27 +1,56 @@
 {
   "compilerOptions": {
-    "target": "es2017",
-    "module": "commonjs",
-    "removeComments": false,
-    "preserveConstEnums": true,
+    "rootDir": "./src",
+
+    // Basic Compilation Settings
+    "target": "ESNext",
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+
+    // Module Resolution and Paths
     "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "noImplicitAny": false,
-    "allowSyntheticDefaultImports": true,
-    "outDir": "lib",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+
+    // Code Quality and Strictness
+    "strict": true,
+    "strictNullCheck": true,
+    "noImplicitAny": true,
+
+    // Output Control
+    "declaration": true,
+    "declarationDir": "",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "strictNullChecks": true,
-    "sourceMap": true,
-    "baseUrl": ".",
-    "rootDir": ".",
-    "jsx": "react-jsx",
-    "allowJs": true,
+    "noFallthroughCasesInSwitch": true,
+    "outDir": "./dist",
+
+    // Development Env
+    "allowImportingTsExtensions": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "resolveJsonModule": true,
-    "typeRoots": [
-      "node_modules/@types"
-    ]
+    "sourceMap": true,
+    "useDefineForClassFields": true,
+    "types": ["vitest"],
+    //    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+
+    // Additional
+    "isolatedModules": true,
+    "importHelpers": true,
+    "noEmit": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "experimentalDecorators": true,
+    "allowJs": true,
+    "typeRoots": ["node_modules/@types", "./types"]
   },
   "include": ["./src", "./types"],
+  "exclude": ["node_modules", "dist", ".swc", "./config"],
   "compileOnSave": false
 }
