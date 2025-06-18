@@ -70,9 +70,8 @@ const config = {
   },
 }
 
-type MergeFn = (target: object, ...sources: object[]) => object
-
-module.exports = function (merge: MergeFn) {
+// @ts-ignore
+module.exports = function (merge) {
   if (process.env.NODE_ENV === 'development') {
     return merge({}, config, require('./dev'))
   }
