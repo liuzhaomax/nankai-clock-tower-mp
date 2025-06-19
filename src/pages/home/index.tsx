@@ -1,18 +1,23 @@
 import { Button } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
-import { useLoad } from '@tarojs/taro'
-import './index.scss'
+import { useLoad, navigateTo } from '@tarojs/taro'
+import './home.scss'
 
-function Index() {
+function Home() {
   useLoad(() => {
-    console.log('Page loaded.')
+    console.log('Home loaded.')
   })
+
+  const onClickBtn = () => {
+    console.log('Clicked on Room')
+    navigateTo({ url: '/pages/room/index' })
+  }
 
   return (
     <View className="nutui-react-demo">
-      <View className="index">欢迎使用 NutUI React 开发 Taro 多端项目。</View>
-      <View className="index">
-        <Button type="primary" className="btn">
+      <View className="home">欢迎使用 NutUI React 开发 Taro 多端项目。</View>
+      <View className="home">
+        <Button type="primary" className="btn" onClick={onClickBtn}>
           NutUI React Button
         </Button>
       </View>
@@ -20,4 +25,4 @@ function Index() {
   )
 }
 
-export default Index
+export default Home
