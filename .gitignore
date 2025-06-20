@@ -1,6 +1,10 @@
 .idea
 .vscode
 
+# 微信开发者工具配置
+project.private.config.json
+
+# node_modules
 node_modules/
 
 # temp

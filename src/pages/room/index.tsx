@@ -1,17 +1,14 @@
 import { View } from '@tarojs/components'
 import { useLoad } from '@tarojs/taro'
-import './room.scss'
+
+import styles from './room.module.scss'
 
 function Room() {
   useLoad(() => {
     console.log('Room loaded.')
   })
 
-  return (
-    <View className="nutui-react-demo">
-      <View className="room">Room</View>
-    </View>
-  )
+  return <View className={styles.room}>Room</View>
 }
 
 export default Room
