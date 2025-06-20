@@ -112,7 +112,16 @@ module.exports = {
           { name: 'NavLink', linkAttribute: 'to' },
         ],
         'import/resolver': {
-          typescript: {},
+          node: {
+            extensions: ['.ts', '.tsx'],
+          },
+          typescript: {
+            alwaysTryTypes: true,
+          },
+          alias: {
+            map: [['@', './src']],
+            extensions: ['.ts', '.js', '.tsx', '.jsx'],
+          },
         },
         'import/internal-regex': '^~/',
       },
@@ -161,6 +170,10 @@ module.exports = {
           },
           typescript: {
             alwaysTryTypes: true,
+          },
+          alias: {
+            map: [['@', './src']],
+            extensions: ['.ts', '.js', '.tsx', '.jsx'],
           },
         },
       },
