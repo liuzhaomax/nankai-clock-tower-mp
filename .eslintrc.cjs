@@ -123,7 +123,7 @@ module.exports = {
             extensions: ['.ts', '.js', '.tsx', '.jsx'],
           },
         },
-        'import/internal-regex': '^~/',
+        'import/internal-regex': '^@/',
       },
     },
     // Typescript
@@ -163,7 +163,7 @@ module.exports = {
         ],
       },
       settings: {
-        'import/internal-regex': '^~/',
+        'import/internal-regex': '^@/',
         'import/resolver': {
           node: {
             extensions: ['.ts', '.tsx'],
