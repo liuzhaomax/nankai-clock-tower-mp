@@ -4,3 +4,5 @@ export const PAGES = {
   GAME: 'pages/game/index',
   REVIEW: 'pages/review/index',
 }
+
+export const Pages: string[] = Object.values(PAGES)

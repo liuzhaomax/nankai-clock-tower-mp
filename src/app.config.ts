@@ -1,5 +1,7 @@
+import { Pages } from '@/config/constants.ts'
+
 export default defineAppConfig({
-  pages: ['pages/home/index', 'pages/room/index', 'pages/game/index', 'pages/review/index'],
+  pages: Pages,
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',
