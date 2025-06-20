@@ -1,3 +1,5 @@
+import * as path from 'node:path'
+
 const config = {
   projectName: 'nct',
   date: '2025-6-18',
@@ -20,6 +22,11 @@ const config = {
   compiler: {
     type: 'webpack5',
     prebundle: { enable: false },
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'), // 将 @ 指向 src 目录
+    },
   },
   mini: {
     postcss: {
