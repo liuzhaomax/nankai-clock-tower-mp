@@ -72,35 +72,37 @@ module.exports = {
       ],
       rules: {
         'import/namespace': 'off',
+        'import/order': 'off',
+        'import/no-duplicates': 'off',
         'react-hooks/exhaustive-deps': 'off',
-        'import/order': [
-          'warn',
-          {
-            groups: [
-              'builtin',
-              'external',
-              'internal',
-              'parent',
-              'sibling',
-              'index',
-              'object',
-              'type',
-            ],
-            pathGroups: [
-              {
-                pattern: '@/**',
-                group: 'internal',
-                position: 'after',
-              },
-            ],
-            pathGroupsExcludedImportTypes: ['builtin'],
-            'newlines-between': 'always',
-            alphabetize: {
-              order: 'asc',
-              caseInsensitive: true,
-            },
-          },
-        ],
+        // 'import/order': [
+        //   'warn',
+        //   {
+        //     groups: [
+        //       'builtin',
+        //       'external',
+        //       'internal',
+        //       'parent',
+        //       'sibling',
+        //       'index',
+        //       'object',
+        //       'type',
+        //     ],
+        //     pathGroups: [
+        //       {
+        //         pattern: '@/**',
+        //         group: 'internal',
+        //         position: 'after',
+        //       },
+        //     ],
+        //     pathGroupsExcludedImportTypes: ['builtin'],
+        //     'newlines-between': 'always',
+        //     alphabetize: {
+        //       order: 'asc',
+        //       caseInsensitive: true,
+        //     },
+        //   },
+        // ],
       },
       settings: {
         react: {
@@ -133,34 +135,36 @@ module.exports = {
       parser: '@typescript-eslint/parser',
       rules: {
         'import/namespace': 'off',
-        'import/order': [
-          'warn',
-          {
-            groups: [
-              'builtin',
-              'external',
-              'internal',
-              'parent',
-              'sibling',
-              'index',
-              'object',
-              'type',
-            ],
-            pathGroups: [
-              {
-                pattern: '@/**',
-                group: 'internal',
-                position: 'after',
-              },
-            ],
-            pathGroupsExcludedImportTypes: ['builtin'],
-            'newlines-between': 'always',
-            alphabetize: {
-              order: 'asc',
-              caseInsensitive: true,
-            },
-          },
-        ],
+        'import/order': 'off',
+        'import/no-duplicates': 'off',
+        // 'import/order': [
+        //   'warn',
+        //   {
+        //     groups: [
+        //       'builtin',
+        //       'external',
+        //       'internal',
+        //       'parent',
+        //       'sibling',
+        //       'index',
+        //       'object',
+        //       'type',
+        //     ],
+        //     pathGroups: [
+        //       {
+        //         pattern: '@/**',
+        //         group: 'internal',
+        //         position: 'after',
+        //       },
+        //     ],
+        //     pathGroupsExcludedImportTypes: ['builtin'],
+        //     'newlines-between': 'always',
+        //     alphabetize: {
+        //       order: 'asc',
+        //       caseInsensitive: true,
+        //     },
+        //   },
+        // ],
       },
       settings: {
         'import/internal-regex': '^@/',
