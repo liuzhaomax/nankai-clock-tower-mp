@@ -88,7 +88,7 @@ module.exports = {
             ],
             pathGroups: [
               {
-                pattern: '~/**',
+                pattern: '@/**',
                 group: 'internal',
                 position: 'after',
               },
@@ -148,7 +148,7 @@ module.exports = {
             ],
             pathGroups: [
               {
-                pattern: '~/**',
+                pattern: '@/**',
                 group: 'internal',
                 position: 'after',
               },

@@ -14,7 +14,7 @@ function Home() {
   const onClickBtn = () => {
     console.log('Clicked on Room')
     console.log(PAGES.ROOM)
-    navigateTo({ url: 'index' })
+    navigateTo({ url: 'pages/room/index' })
   }
 
   return (
