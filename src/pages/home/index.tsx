@@ -4,6 +4,8 @@ import { useLoad, navigateTo } from '@tarojs/taro'
 
 import styles from './home.module.scss'
 
+import { PAGES } from '@/config/constants.ts'
+
 function Home() {
   useLoad(() => {
     console.log('Home loaded.')
@@ -11,7 +13,7 @@ function Home() {
 
   const onClickBtn = () => {
     console.log('Clicked on Room')
-    navigateTo({ url: '/pages/room/index' })
+    navigateTo({ url: PAGES.ROOM })
   }
 
   return (

@@ -71,6 +71,7 @@ module.exports = {
         'plugin:import/recommended',
       ],
       rules: {
+        'import/namespace': 'off',
         'react-hooks/exhaustive-deps': 'off',
         'import/order': [
           'warn',
@@ -122,6 +123,7 @@ module.exports = {
       plugins: ['@typescript-eslint', 'import', 'sonarjs', 'unicorn'],
       parser: '@typescript-eslint/parser',
       rules: {
+        'import/namespace': 'off',
         'import/order': [
           'warn',
           {
