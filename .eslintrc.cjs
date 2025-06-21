@@ -72,9 +72,13 @@ module.exports = {
       ],
       rules: {
         'import/namespace': 'off',
-        'import/order': 'off',
+        // 'import/order': 'off',
         'import/no-duplicates': 'off',
         'react-hooks/exhaustive-deps': 'off',
+        'import/named': 'off',
+        'import/default': 'off',
+        'import/no-named-as-default': 'off',
+        'import/no-named-as-default-member': 'off',
         // 'import/order': [
         //   'warn',
         //   {
@@ -135,8 +139,12 @@ module.exports = {
       parser: '@typescript-eslint/parser',
       rules: {
         'import/namespace': 'off',
-        'import/order': 'off',
+        // 'import/order': 'off',
         'import/no-duplicates': 'off',
+        'import/named': 'off',
+        'import/default': 'off',
+        'import/no-named-as-default': 'off',
+        'import/no-named-as-default-member': 'off',
         // 'import/order': [
         //   'warn',
         //   {
