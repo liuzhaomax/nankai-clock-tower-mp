@@ -1,5 +1,6 @@
 .home {
   height: 100vh;
+  color: white;
 
   background-image: url('../../assets/img/bg/cover1.png');
   background-size: cover;
@@ -17,7 +18,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   filter: blur(1px) contrast(1.6);
 }
 
@@ -64,4 +65,61 @@
       background-position: 300%;
     }
   }
+}
+
+//蝙蝠动画
+.batGif {
+  position: fixed;
+  top: -10%;
+  left: -25%;
+  width: 150vw;
+  height: 120vh;
+  object-fit: cover;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/*健康忠告*/
+.warnHealth {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  p {
+    margin: 0;
+    font-size: 14px;
+  }
+}
+
+/*备案*/
+.icp {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+
+  a:link {
+    color: white !important;
+  }
+
+  a:visited {
+    color: white !important;
+  }
+
+  a:hover {
+    color: gainsboro !important;
+  }
+
+  a:active {
+    color: white !important;
+  }
+}
+
+.icpImg {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
 }
