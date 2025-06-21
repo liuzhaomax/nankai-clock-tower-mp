@@ -18,6 +18,9 @@ function Home() {
 
   return (
     <View className={styles.home}>
+      <View className={styles.titleWrap}>
+        <View className={styles.title}>南开钟楼</View>
+      </View>
       <Button className={styles.mainBtn} type="primary" onClick={onClickMainBtn}>
         创建房间
       </Button>
