@@ -1,15 +1,15 @@
 /// <reference types="@tarojs/taro" />
 
-declare module '*.png';
-declare module '*.gif';
-declare module '*.jpg';
-declare module '*.jpeg';
-declare module '*.svg';
-declare module '*.css';
-declare module '*.less';
-declare module '*.scss';
-declare module '*.sass';
-declare module '*.styl';
+declare module '*.png'
+declare module '*.gif'
+declare module '*.jpg'
+declare module '*.jpeg'
+declare module '*.svg'
+declare module '*.css'
+declare module '*.less'
+declare module '*.scss'
+declare module '*.sass'
+declare module '*.styl'
 declare module '*.ts'
 declare module '*.tsx'
 
@@ -25,7 +25,7 @@ declare namespace NodeJS {
      * @see https://taro-docs.jd.com/docs/next/env-mode-config#特殊环境变量-taro_app_id
      */
     TARO_APP_ID: string
+    // 后端网址
+    BASE_URL: string
   }
 }
-
-

@@ -12,7 +12,13 @@
 + ? 请选择模板 react-NutUI（NutUI + React 模板（https://nutui.jd.com/react/））
 
 TODO：
-+ router
 + navi
++ 左上角按钮
++ 登录
 + 请求
 + 部署
++ 模块
+  + 首页
+  + 房间
+  + 游戏中
+  + 结算

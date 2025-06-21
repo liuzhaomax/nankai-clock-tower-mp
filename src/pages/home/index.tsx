@@ -11,14 +11,14 @@ function Home() {
     console.log('Home loaded.')
   })
 
-  const onClickBtn = () => {
+  const onClickMainBtn = () => {
     console.log('Clicked on Room')
     navigateTo({ url: `/${PAGES.ROOM}` })
   }
 
   return (
     <View className={styles.home}>
-      <Button className={styles.btn} type="primary" onClick={onClickBtn}>
+      <Button className={styles.mainBtn} type="primary" onClick={onClickMainBtn}>
         创建房间
       </Button>
     </View>
