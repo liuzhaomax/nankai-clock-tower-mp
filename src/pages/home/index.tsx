@@ -59,9 +59,12 @@ function Home() {
       ) : (
         <></>
       )}
-      <Button className={styles.mainBtn} type="primary" onClick={onClickMainBtn}>
-        创建房间
-      </Button>
+      <View className={styles.mainBtnWrap}>
+        <View className={styles.mainBtnBefore}></View>
+        <Button className={styles.mainBtn} type="primary" onClick={onClickMainBtn}>
+          创建房间
+        </Button>
+      </View>
       <View className={styles.warnHealth}>
         <p>健康游戏忠告</p>
         <p>抵制不良游戏，拒绝盗版游戏。</p>
