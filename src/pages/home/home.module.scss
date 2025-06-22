@@ -112,6 +112,13 @@
   pointer-events: none;
 }
 
+//流血动画
+.canvas {
+  position: absolute;
+  width: 345px;
+  height: 180px;
+}
+
 /*健康忠告*/
 .warnHealth {
   display: flex;

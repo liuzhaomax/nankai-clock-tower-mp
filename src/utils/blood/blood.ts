@@ -18,8 +18,8 @@ class Blood implements BloodDrop {
   cy: number
   speed: number
   opacity: number
-  ctx: Taro.CanvasContext
-  // ctx: CanvasRenderingContext2D; // h5写法
+  ctx: Taro.CanvasContext // taro写法
+  // ctx: CanvasRenderingContext2D // h5写法
 
   constructor(x: number, y: number, r: number, s: number, ctx: Taro.CanvasContext) {
     this.x = x
@@ -39,7 +39,7 @@ class Blood implements BloodDrop {
     this.ctx.fillStyle = 'rgba(160, 42, 42, 0.5)' // 半透明的红色
     this.ctx.fill()
 
-    this.ctx.draw() // weapp写法
+    this.ctx.draw() // taro写法
   }
 }
 
@@ -47,11 +47,13 @@ export const blood = async (): Promise<void> => {
   await sleep(3000)
   const h = 100
   const w = 345
-  const ctx = Taro.createCanvasContext('canvas-blood')
+  // taro写法
+  const ctx = Taro.createCanvasContext('canvas')
   if (!ctx) return
-  // h5写法
+  // // h5写法
   // const canvas = document.createElement('canvas');
-  // ctx = canvas.getContext('2d');
+  // // const canvas = document.getElementById('canvas');
+  // const ctx = canvas.getContext('2d');
   // if (!ctx) return;
   //
   // const container = document.getElementById('Title-wrap');
@@ -86,7 +88,7 @@ export const blood = async (): Promise<void> => {
 
   let stop = false
 
-  const loop = async (): Promise<void> => {
+  const loop = (): void => {
     ctx.fillStyle = 'rgba(0,0,0,0)'
     ctx.fillRect(0, 0, w, h)
 
@@ -115,8 +117,8 @@ export const blood = async (): Promise<void> => {
     }
 
     if (!stop) {
-      // requestAnimationFrame(loop); // h5写法
-      Taro.nextTick(loop)
+      //TODO taro怎么写
+      requestAnimationFrame(loop) // h5写法
     }
   }
 

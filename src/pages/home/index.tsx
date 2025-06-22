@@ -43,16 +43,16 @@ function Home() {
       if (!isMountedRef.current) return
       await sleep(10000) // 10秒后显示
       setIsBatVisible(true)
-      loop()
+      await loop()
     }
     loop()
   }
 
   return (
     <View className={styles.home}>
-      <View id="Title-wrap" className={styles.titleWrap}>
+      <View className={styles.titleWrap}>
         <View className={styles.title}>南开钟楼</View>
-        <Canvas canvasId="canvas-blood" style={{ width: '100vw', height: '100px' }} />
+        <Canvas id="canvas" canvasId="canvas" className={styles.canvas} />
       </View>
       {isBatVisible ? (
         <img id="Bat-gif" className={styles.batGif} src={bat} alt="Bat GIF" />
