@@ -52,7 +52,7 @@ function Home() {
     <View className={styles.home}>
       <View className={styles.titleWrap}>
         <View className={styles.title}>南开钟楼</View>
-        <Canvas id="canvas" canvasId="canvas" className={styles.canvas} />
+        <Canvas className={styles.canvas} id="canvas" canvasId="canvas" type="2d" />
       </View>
       {isBatVisible ? (
         <img id="Bat-gif" className={styles.batGif} src={bat} alt="Bat GIF" />

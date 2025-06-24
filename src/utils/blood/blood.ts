@@ -1,5 +1,5 @@
 import { sleep } from '@/utils/time.ts'
-import Taro from '@tarojs/taro'
+import { Canvas, createSelectorQuery, CanvasContext, NodesRef } from '@tarojs/taro'
 
 interface BloodDrop {
   x: number
@@ -18,8 +18,7 @@ class Blood implements BloodDrop {
   cy: number
   speed: number
   opacity: number
-  ctx: Taro.CanvasContext // taro写法
-  // ctx: CanvasRenderingContext2D // h5写法
+  ctx: CanvasContext
 
   constructor(x: number, y: number, r: number, s: number, ctx: Taro.CanvasContext) {
     this.x = x
@@ -38,52 +37,42 @@ class Blood implements BloodDrop {
     this.ctx.closePath()
     this.ctx.fillStyle = 'rgba(160, 42, 42, 0.5)' // 半透明的红色
     this.ctx.fill()
-
-    this.ctx.draw() // taro写法
   }
 }
 
-export const blood = async (): Promise<void> => {
+const drawBlood = async (res: NodesRef[]): Promise<void> => {
   await sleep(3000)
-  const h = 100
+  const h = 200
   const w = 345
-  // taro写法
-  const ctx = Taro.createCanvasContext('canvas')
+  const canvas: Canvas = res[0].node as unknown as Canvas
+  const ctx: CanvasContext = canvas.getContext('2d') as CanvasContext
   if (!ctx) return
-  // // h5写法
-  // const canvas = document.createElement('canvas');
-  // // const canvas = document.getElementById('canvas');
-  // const ctx = canvas.getContext('2d');
-  // if (!ctx) return;
-  //
-  // const container = document.getElementById('Title-wrap');
-  // container?.appendChild(canvas);
-  // canvas.height = h;
-  // canvas.width = w;
+  canvas.height = h
+  canvas.width = w
 
   const bloodDrops: Blood[] = [
-    // 血
-    new Blood(13, 76, 0.7, 0.9, ctx),
-    new Blood(31, 72, 1, 1.2, ctx),
-    new Blood(38, 30, 1.3, 1.5, ctx),
-    new Blood(70, 38, 1.2, 1, ctx),
-    new Blood(80, 74, 1.6, 1.7, ctx),
-    // 染
-    new Blood(100, 68, 1, 1.3, ctx),
-    new Blood(115, 40, 0.8, 0.8, ctx),
-    new Blood(135, 75, 1, 1.3, ctx),
-    new Blood(160, 62, 1.5, 1.9, ctx),
+    // 南
+    new Blood(20, 80, 0.7, 0.9, ctx),
+    new Blood(31, 81, 1, 1.2, ctx),
+    new Blood(45, 92, 1.3, 1.5, ctx),
+    new Blood(62, 23, 1.2, 1, ctx),
+    new Blood(70, 92, 1.6, 1.7, ctx),
+    // 开
+    new Blood(103, 68, 1, 1.3, ctx),
+    new Blood(124, 64, 1.8, 0.8, ctx),
+    new Blood(142, 80, 1, 1.3, ctx),
+    new Blood(160, 54, 1.5, 1.9, ctx),
     // 钟
     new Blood(182, 50, 0.8, 0.9, ctx),
     new Blood(203, 72, 1, 1.4, ctx),
-    new Blood(220, 55, 0.7, 0.8, ctx),
-    new Blood(230, 82, 1, 1.1, ctx),
-    new Blood(250, 40, 1.3, 0.9, ctx),
+    new Blood(216, 55, 0.7, 0.8, ctx),
+    new Blood(228, 82, 1, 1.1, ctx),
+    new Blood(245, 46, 1.3, 0.9, ctx),
     // 楼
-    new Blood(268, 72, 1.3, 0.7, ctx),
-    new Blood(280, 82, 1.2, 1.3, ctx),
-    new Blood(300, 80, 0.8, 1, ctx),
-    new Blood(334, 62, 1.8, 1.2, ctx),
+    new Blood(265, 76, 1.3, 0.7, ctx),
+    new Blood(278, 82, 1.2, 1.3, ctx),
+    new Blood(294, 80, 0.8, 1, ctx),
+    new Blood(328, 68, 1.8, 1.2, ctx),
   ]
 
   let stop = false
@@ -117,10 +106,14 @@ export const blood = async (): Promise<void> => {
     }
 
     if (!stop) {
-      //TODO taro怎么写
-      requestAnimationFrame(loop) // h5写法
+      canvas.requestAnimationFrame(loop)
     }
   }
 
   loop()
+}
+
+export const blood = (): void => {
+  const query = createSelectorQuery()
+  query.select('#canvas').fields({ node: true, size: true }).exec(drawBlood)
 }
