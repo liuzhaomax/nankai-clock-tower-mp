@@ -7,7 +7,6 @@ import { PAGES } from '@/config/constants.ts'
 import styles from './home.module.scss'
 import { useEffect, useRef, useState } from 'react'
 import { blood } from '@/utils/blood/blood.ts'
-import bat from '@/assets/video/bat.gif'
 import ICP from '@/assets/img/ICP.png'
 import { sleep } from '@/utils/time.ts'
 
@@ -54,11 +53,7 @@ function Home() {
         <View className={styles.title}>南开钟楼</View>
         <Canvas className={styles.canvas} id="canvas" canvasId="canvas" type="2d" />
       </View>
-      {isBatVisible ? (
-        <img id="Bat-gif" className={styles.batGif} src={bat} alt="Bat GIF" />
-      ) : (
-        <></>
-      )}
+      {isBatVisible ? <View id="Bat-gif" className={styles.batGif}></View> : <></>}
       <View className={styles.mainBtnWrap}>
         <View className={styles.mainBtnBefore}></View>
         <Button className={styles.mainBtn} type="primary" onClick={onClickMainBtn}>

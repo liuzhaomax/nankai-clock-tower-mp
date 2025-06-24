@@ -103,13 +103,15 @@
 //蝙蝠动画
 .batGif {
   position: fixed;
-  top: -10%;
-  left: -25%;
   width: 150vw;
   height: 120vh;
   object-fit: cover;
   z-index: 2;
   pointer-events: none;
+  background-image: url('../../assets/video/bat.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 //流血动画
