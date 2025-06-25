@@ -5,4 +5,9 @@ export const PAGES = {
   REVIEW: 'pages/review/index',
 }
 
-export const Pages: string[] = Object.values(PAGES)
+export const ROUTES = {
+  HOME: `/${PAGES.HOME}`,
+  ROOM: `/room/${PAGES.ROOM}`,
+  GAME: `/game/${PAGES.GAME}`,
+  REVIEW: `/review/${PAGES.REVIEW}`,
+}

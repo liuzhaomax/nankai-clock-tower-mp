@@ -2,7 +2,7 @@ import { Button } from '@nutui/nutui-react-taro'
 import { Canvas, View } from '@tarojs/components'
 import { useLoad, navigateTo } from '@tarojs/taro'
 
-import { PAGES } from '@/config/constants.ts'
+import { ROUTES } from '@/config/constants.ts'
 
 import styles from './home.module.scss'
 import { useEffect, useRef, useState } from 'react'
@@ -10,14 +10,14 @@ import { blood } from '@/utils/blood/blood.ts'
 import ICP from '@/assets/img/ICP.png'
 import { sleep } from '@/utils/time.ts'
 
-function Home() {
+const Home: React.FC = () => {
   useLoad(() => {
     console.log('Home loaded.')
   })
 
   const onClickMainBtn = () => {
     console.log('Clicked on Room')
-    navigateTo({ url: `/${PAGES.ROOM}` })
+    navigateTo({ url: ROUTES.ROOM })
   }
 
   // 动画 流血

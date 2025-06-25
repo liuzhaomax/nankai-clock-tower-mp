@@ -3,7 +3,7 @@ import { useLoad } from '@tarojs/taro'
 
 import styles from './room.module.scss'
 
-function Room() {
+const Room: React.FC = () => {
   useLoad(() => {
     console.log('Room loaded.')
   })

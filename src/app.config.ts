@@ -1,7 +1,21 @@
-import { Pages } from '@/config/constants.ts'
+import { PAGES } from '@/config/constants.ts'
 
 export default defineAppConfig({
-  pages: Pages,
+  pages: [PAGES.HOME],
+  subPackages: [
+    {
+      root: 'room',
+      pages: [PAGES.ROOM],
+    },
+    {
+      root: 'game',
+      pages: [PAGES.GAME],
+    },
+    {
+      root: 'review',
+      pages: [PAGES.REVIEW],
+    },
+  ],
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',
