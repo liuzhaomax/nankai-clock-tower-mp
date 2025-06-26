@@ -49,14 +49,6 @@ const drawBlood = async (res: NodesRef[]): Promise<void> => {
   if (!ctx) return
   canvas.width = w
   canvas.height = h
-  // const widthRatio =  390 / window.innerWidth
-  // const heightRatio = 753 / window.innerHeight
-  // canvas.width = w * widthRatio
-  // canvas.height = h * heightRatio
-  console.log('innerWidth', window.innerWidth) // 390   430
-  console.log('innerHeight', window.innerHeight) // 753  834
-  console.log('canvas.width', canvas.width) // 345
-  console.log('canvas.height', canvas.height) // 200
 
   const bloodDrops: Blood[] = [
     // 南
