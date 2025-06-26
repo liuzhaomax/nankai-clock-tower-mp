@@ -42,13 +42,21 @@ class Blood implements BloodDrop {
 
 const drawBlood = async (res: NodesRef[]): Promise<void> => {
   await sleep(3000)
-  const h = 200
   const w = 345
+  const h = 200
   const canvas: Canvas = res[0].node as unknown as Canvas
   const ctx: CanvasContext = canvas.getContext('2d') as CanvasContext
   if (!ctx) return
-  canvas.height = h
   canvas.width = w
+  canvas.height = h
+  // const widthRatio =  390 / window.innerWidth
+  // const heightRatio = 753 / window.innerHeight
+  // canvas.width = w * widthRatio
+  // canvas.height = h * heightRatio
+  console.log('innerWidth', window.innerWidth) // 390   430
+  console.log('innerHeight', window.innerHeight) // 753  834
+  console.log('canvas.width', canvas.width) // 345
+  console.log('canvas.height', canvas.height) // 200
 
   const bloodDrops: Blood[] = [
     // 南

@@ -1,12 +1,11 @@
 import { Button } from '@nutui/nutui-react-taro'
-import { Canvas, View } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { useLoad, navigateTo } from '@tarojs/taro'
 
 import { ROUTES } from '@/config/constants.ts'
 
 import styles from './home.module.scss'
 import { useEffect, useRef, useState } from 'react'
-import { blood } from '@/utils/blood/blood.ts'
 import ICP from '@/assets/img/ICP.png'
 import { sleep } from '@/utils/time.ts'
 
@@ -20,10 +19,10 @@ const Home: React.FC = () => {
     navigateTo({ url: ROUTES.ROOM })
   }
 
-  // 动画 流血
-  useEffect(() => {
-    blood()
-  }, [])
+  // 动画 流血 taro3.6不支持 filter: url(#noise) 而且canvas不能锁定345的宽度，自适应无法调整
+  // useEffect(() => {
+  //   blood()
+  // }, [])
 
   // 动画 蝙蝠
   const [isBatVisible, setIsBatVisible] = useState(true)
@@ -51,7 +50,13 @@ const Home: React.FC = () => {
     <View className={styles.home}>
       <View className={styles.titleWrap}>
         <View className={styles.title}>南开钟楼</View>
-        <Canvas className={styles.canvas} id="canvas" canvasId="canvas" type="2d" />
+        {/*<Canvas className={styles.canvas} id="canvas" canvasId="canvas" type="2d" />*/}
+        {/*<svg className={styles.svg}>*/}
+        {/*  <filter id="noise">*/}
+        {/*    <feTurbulence baseFrequency="0.07" type="fractalNoise" result="turbNoise"></feTurbulence>*/}
+        {/*    <feDisplacementMap in="SourceGraphic" in2="turbNoise" xChannelSelector="G" yChannelSelector="B" scale="6" result="disp"></feDisplacementMap>*/}
+        {/*  </filter>*/}
+        {/*</svg>*/}
       </View>
       {isBatVisible ? <View id="Bat-gif" className={styles.batGif}></View> : <></>}
       <View className={styles.mainBtnWrap}>
