@@ -17,7 +17,7 @@
 
     // Code Quality and Strictness
     "strict": true,
-    "strictNullCheck": true,
+    "strictNullChecks": true,
     "noImplicitAny": true,
 
     // Output Control
