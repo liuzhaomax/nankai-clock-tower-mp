@@ -59,8 +59,8 @@ const CreateRoom: React.FC = () => {
     setShowGameVersionPicker(false)
     const text = selectedOptions.find((item) => item.value === selectedValue[0])
       ?.text as GameVersionType
+    //DECLARE 目前只有暗流涌动
     if (text === GAME_VERSIONS.TroubleBrewing) {
-      //DECLARE 目前只有暗流涌动
       form.setFieldsValue({ gameVersion: text })
     }
   }
