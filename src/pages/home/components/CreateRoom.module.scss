@@ -1,0 +1,22 @@
+.popup {
+  height: 45vh;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.picker {
+  :global {
+    .nut-picker-list-item {
+      font-size: 18px !important;
+      color: red !important;
+    }
+    .nut-picker-roller {
+      height: 44px !important;
+    }
+  }
+}

@@ -1,23 +1,18 @@
 import { Button } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
-import { useLoad, navigateTo } from '@tarojs/taro'
-
-import { ROUTES } from '@/config/constants.ts'
+import { useLoad } from '@tarojs/taro'
 
 import styles from './home.module.scss'
 import { useEffect, useRef, useState } from 'react'
 import ICP from '@/assets/img/ICP.png'
 import { sleep } from '@/utils/time.ts'
+import CreateRoom from '@/pages/home/components/CreateRoom.tsx'
+import useCreateRoomStore from '@/pages/home/stores/useCreateRoom.ts'
 
 const Home: React.FC = () => {
   useLoad(() => {
     console.log('Home loaded.')
   })
-
-  const onClickMainBtn = () => {
-    console.log('Clicked on Room')
-    navigateTo({ url: ROUTES.ROOM })
-  }
 
   // 动画 流血 taro3.6不支持 filter: url(#noise) 而且canvas不能锁定345的宽度，自适应无法调整
   // useEffect(() => {
@@ -46,6 +41,13 @@ const Home: React.FC = () => {
     loop()
   }
 
+  // 创建房间
+  const { setShowCreateRoomForm } = useCreateRoomStore()
+
+  const onClickMainBtn = () => {
+    setShowCreateRoomForm(true)
+  }
+
   return (
     <View className={styles.home}>
       <View className={styles.titleWrap}>
@@ -64,6 +66,7 @@ const Home: React.FC = () => {
         <Button className={styles.mainBtn} type="primary" onClick={onClickMainBtn}>
           创建房间
         </Button>
+        <CreateRoom />
       </View>
       <View className={styles.warnHealth}>
         <p>健康游戏忠告</p>
