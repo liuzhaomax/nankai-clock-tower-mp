@@ -6,7 +6,7 @@ import styles from './home.module.scss'
 import { useEffect, useRef, useState } from 'react'
 import ICP from '@/assets/img/ICP.png'
 import { sleep } from '@/utils/time.ts'
-import CreateRoom from '@/pages/home/components/CreateRoom.tsx'
+import CreateRoom from '@/pages/home/components/CreateRoom/CreateRoom.tsx'
 import useCreateRoomStore from '@/pages/home/stores/useCreateRoom.ts'
 
 const Home: React.FC = () => {
