@@ -83,7 +83,7 @@ const CreateRoom: React.FC = () => {
         divider
         labelPosition="right"
         footer={
-          <Button nativeType="submit" block type="primary">
+          <Button className={styles.submitBtn} nativeType="submit" block type="primary">
             确认
           </Button>
         }
