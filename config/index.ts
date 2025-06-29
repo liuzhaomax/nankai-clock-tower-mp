@@ -51,6 +51,11 @@ const config = {
         },
       },
     },
+    // 忽略mini-css-extract-plugin报错conflicting order
+    enableExtract: true,
+    miniCssExtractPluginOption: {
+      ignoreOrder: true,
+    },
   },
   h5: {
     publicPath: '/',
