@@ -1,6 +1,7 @@
 import { View } from '@tarojs/components'
 import { useLoad } from '@tarojs/taro'
 
+import HeaderNav from '@/components/HeaderNav/HeaderNav'
 import styles from './room.module.scss'
 
 const Room: React.FC = () => {
@@ -8,7 +9,12 @@ const Room: React.FC = () => {
     console.log('Room loaded.')
   })
 
-  return <View className={styles.room}>Room</View>
+  return (
+    <View>
+      <HeaderNav />
+      <View className={styles.room}>Room</View>
+    </View>
+  )
 }
 
 export default Room
