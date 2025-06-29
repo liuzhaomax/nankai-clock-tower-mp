@@ -40,6 +40,8 @@ const CreateRoom: React.FC = () => {
     setShowCreateRoomForm(false)
   }
   const confirmCreatingRoom = (values: CreateRoomValues) => {
+    //TODO 发送创建房间请求，需要API
+    //TODO 加载组件时，获取用户昵称，生成房间名称
     console.log(values)
     setShowCreateRoomForm(false)
     navigateTo({ url: ROUTES.ROOM })

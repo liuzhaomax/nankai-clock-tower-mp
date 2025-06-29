@@ -29,7 +29,7 @@
     "outDir": "./dist",
 
     // Development Env
-    "allowImportingTsExtensions": true,
+    // "allowImportingTsExtensions": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
@@ -43,7 +43,7 @@
     "isolatedModules": true,
     "importHelpers": true,
     "noEmit": true,
-    "moduleDetection": "force",
+    // "moduleDetection": "force",
     "skipLibCheck": true,
     "removeComments": false,
     "preserveConstEnums": true,
