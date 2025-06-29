@@ -78,6 +78,9 @@ const Home: React.FC = () => {
           </Button>
           <CreateRoom />
         </View>
+        <Button className={styles.joinBtn} type="primary" onClick={onClickMainBtn}>
+          加入房间
+        </Button>
         <View className={styles.warnHealth}>
           <p>健康游戏忠告</p>
           <p>抵制不良游戏，拒绝盗版游戏。</p>
