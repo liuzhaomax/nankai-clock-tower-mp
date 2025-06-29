@@ -23,6 +23,9 @@ const config = {
     type: 'webpack5',
     prebundle: { enable: false },
   },
+  sass: {
+    data: '@import "@nutui/nutui-react-taro/dist/styles/variables.scss";',
+  },
   alias: {
     '@': path.resolve(__dirname, '..', 'src'), // 将 @ 指向 src 目录
   },

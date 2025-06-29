@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 // import { useDidShow, useDidHide } from '@tarojs/taro'
 // 全局样式
+// import '@nutui/nutui-react-taro/dist/styles/theme-default.scss'
 import './app.scss'
 
 interface AppProps {
