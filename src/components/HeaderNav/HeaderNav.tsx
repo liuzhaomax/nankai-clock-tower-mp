@@ -1,5 +1,5 @@
 import { NavBar } from '@nutui/nutui-react-taro'
-import { Home } from '@nutui/icons-react-taro'
+import { Home, Refresh } from '@nutui/icons-react-taro'
 import { navigateTo } from '@tarojs/taro'
 import { MODULES, ROUTES } from '@/config/constants'
 import { View } from '@tarojs/components'
@@ -30,6 +30,7 @@ const HeaderNav: React.FC = () => {
       back={currentModule === MODULES.HOME ? <></> : <Home className={styles.back} size={25} />}
       onBackClick={clickBack}
     >
+      <Refresh className={styles.refresh} />
       <View className={styles.title}>首页</View>
     </NavBar>
   )
