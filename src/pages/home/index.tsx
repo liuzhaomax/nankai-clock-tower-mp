@@ -1,19 +1,27 @@
 import { Button } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
 import { useLoad } from '@tarojs/taro'
-
-import styles from './home.module.scss'
 import { useEffect, useRef, useState } from 'react'
 import ICP from '@/assets/img/ICP.png'
+import Layout from '@/components/Layout/Layout'
 import { sleep } from '@/utils/time.ts'
 import CreateRoom from '@/pages/home/components/CreateRoom/CreateRoom.tsx'
 import useCreateRoomStore from '@/pages/home/stores/useCreateRoom.ts'
-import HeaderNav from '@/components/HeaderNav/HeaderNav'
+import useTargetModuleStore from '@/stores/useCurrentModule'
+import { MODULES } from '@/config/constants'
+
+import styles from './home.module.scss'
 
 const Home: React.FC = () => {
   useLoad(() => {
     console.log('Home loaded.')
   })
+
+  // 设置当前模块名，用于导航
+  const { setCurrentModule } = useTargetModuleStore()
+  useEffect(() => {
+    setCurrentModule(MODULES.HOME)
+  }, [])
 
   // 动画 流血 taro3.6不支持 filter: url(#noise) 而且canvas不能锁定345的宽度，自适应无法调整
   // useEffect(() => {
@@ -50,8 +58,7 @@ const Home: React.FC = () => {
   }
 
   return (
-    <View>
-      <HeaderNav hideBack={true} />
+    <Layout>
       <View className={styles.home}>
         <View className={styles.titleWrap}>
           <View className={styles.title}>南开钟楼</View>
@@ -89,7 +96,7 @@ const Home: React.FC = () => {
           </a>
         </View>
       </View>
-    </View>
+    </Layout>
   )
 }
 

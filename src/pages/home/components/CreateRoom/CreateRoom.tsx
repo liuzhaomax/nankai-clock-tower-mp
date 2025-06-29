@@ -11,6 +11,7 @@ import {
 import { navigateTo } from '@tarojs/taro'
 import { GAME_VERSIONS, ROUTES } from '@/config/constants.ts'
 import useCreateRoomStore from '@/pages/home/stores/useCreateRoom.ts'
+
 import styles from './CreateRoom.module.scss'
 
 type GameVersionType = (typeof GAME_VERSIONS)[keyof typeof GAME_VERSIONS]

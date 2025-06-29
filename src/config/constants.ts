@@ -1,15 +1,22 @@
+export const MODULES = {
+  HOME: 'home',
+  ROOM: 'room',
+  GAME: 'game',
+  REVIEW: 'review',
+}
+
 export const PAGES = {
-  HOME: 'pages/home/index',
-  ROOM: 'pages/room/index',
-  GAME: 'pages/game/index',
-  REVIEW: 'pages/review/index',
+  HOME: `pages/${MODULES.HOME}/index`,
+  ROOM: `pages/${MODULES.ROOM}/index`,
+  GAME: `pages/${MODULES.GAME}/index`,
+  REVIEW: `pages/${MODULES.REVIEW}/index`,
 }
 
 export const ROUTES = {
   HOME: `/${PAGES.HOME}`,
-  ROOM: `/room/${PAGES.ROOM}`,
-  GAME: `/game/${PAGES.GAME}`,
-  REVIEW: `/review/${PAGES.REVIEW}`,
+  ROOM: `/${MODULES.ROOM}/${PAGES.ROOM}`,
+  GAME: `/${MODULES.GAME}/${PAGES.GAME}`,
+  REVIEW: `/${MODULES.REVIEW}/${PAGES.REVIEW}`,
 }
 
 export const GAME_VERSIONS = {

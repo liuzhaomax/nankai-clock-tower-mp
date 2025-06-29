@@ -23,4 +23,5 @@ export default defineAppConfig({
     navigationBarTextStyle: 'black',
     navigationStyle: 'custom', // 隐藏默认导航栏
   },
+  lazyCodeLoading: 'requiredComponents', // 打开懒加载
 })
