@@ -1,18 +1,18 @@
-import { PAGES } from '@/config/constants.ts'
+import { MODULES, PAGES } from '@/config/constants.ts'
 
 export default defineAppConfig({
   pages: [PAGES.HOME],
   subPackages: [
     {
-      root: 'room',
+      root: MODULES.ROOM,
       pages: [PAGES.ROOM],
     },
     {
-      root: 'game',
+      root: MODULES.GAME,
       pages: [PAGES.GAME],
     },
     {
-      root: 'review',
+      root: MODULES.REVIEW,
       pages: [PAGES.REVIEW],
     },
   ],

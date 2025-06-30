@@ -1,13 +1,13 @@
 import { NavBar } from '@nutui/nutui-react-taro'
 import { Home, Refresh } from '@nutui/icons-react-taro'
-import { navigateTo } from '@tarojs/taro'
+import { navigateTo, navigateBack } from '@tarojs/taro'
 import { MODULES, ROUTES } from '@/config/constants'
 import { View } from '@tarojs/components'
 import styles from './HeaderNav.module.scss'
-import useTargetModuleStore from '@/stores/useCurrentModule'
+import useNavStore from '@/stores/useNavStore'
 
 const HeaderNav: React.FC = () => {
-  const { currentModule } = useTargetModuleStore()
+  const { currentModule } = useNavStore()
 
   const clickBack = () => {
     switch (currentModule) {
@@ -20,7 +20,7 @@ const HeaderNav: React.FC = () => {
       case MODULES.REVIEW:
         return navigateTo({ url: ROUTES.ROOM })
       default:
-        return navigateTo({ url: ROUTES.HOME })
+        return navigateBack()
     }
   }
 

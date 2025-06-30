@@ -1,0 +1,20 @@
+.popup {
+  width: 100vw;
+  height: 84vh;
+  margin-top: 6vh;
+  z-index: 9999;
+  color: white;
+  background-color: #222;
+}
+
+.title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 0.3rem 0;
+}
+
+.container {
+  padding: 3vh 2vh;
+  overflow-y: auto;
+}

@@ -6,8 +6,9 @@ import ICP from '@/assets/img/ICP.png'
 import Layout from '@/components/Layout/Layout'
 import { sleep } from '@/utils/time.ts'
 import CreateRoom from '@/pages/home/components/CreateRoom/CreateRoom.tsx'
-import useCreateRoomStore from '@/pages/home/stores/useCreateRoom.ts'
-import useTargetModuleStore from '@/stores/useCurrentModule'
+import useCreateRoomStore from '@/pages/home/stores/useCreateRoomStore.ts'
+import useNavStore from '@/stores/useNavStore'
+import useAnimationStore from '@/pages/home/stores/useAnimationStore'
 import { MODULES } from '@/config/constants'
 
 import styles from './home.module.scss'
@@ -18,7 +19,7 @@ const Home: React.FC = () => {
   })
 
   // 设置当前模块名，用于导航
-  const { setCurrentModule } = useTargetModuleStore()
+  const { setCurrentModule } = useNavStore()
   useEffect(() => {
     setCurrentModule(MODULES.HOME)
   }, [])
@@ -29,6 +30,7 @@ const Home: React.FC = () => {
   // }, [])
 
   // 动画 蝙蝠
+  const { enableBat } = useAnimationStore()
   const [isBatVisible, setIsBatVisible] = useState(true)
   const isMountedRef = useRef(true)
   useEffect(() => {
@@ -70,7 +72,15 @@ const Home: React.FC = () => {
           {/*  </filter>*/}
           {/*</svg>*/}
         </View>
-        {isBatVisible ? <View id="Bat-gif" className={styles.batGif}></View> : <></>}
+        {enableBat ? (
+          isBatVisible ? (
+            <View id="Bat-gif" className={styles.batGif}></View>
+          ) : (
+            <></>
+          )
+        ) : (
+          <></>
+        )}
         <View className={styles.mainBtnWrap}>
           <View className={styles.mainBtnBefore}></View>
           <Button className={styles.mainBtn} type="primary" onClick={onClickMainBtn}>

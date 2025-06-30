@@ -1,7 +1,7 @@
 import { View } from '@tarojs/components'
 import { useLoad } from '@tarojs/taro'
 import Layout from '@/components/Layout/Layout'
-import useTargetModuleStore from '@/stores/useCurrentModule'
+import useNavStore from '@/stores/useNavStore'
 import { useEffect } from 'react'
 import { MODULES } from '@/config/constants'
 
@@ -13,7 +13,7 @@ const Room: React.FC = () => {
   })
 
   // 设置当前模块名，用于导航
-  const { setCurrentModule } = useTargetModuleStore()
+  const { setCurrentModule } = useNavStore()
   useEffect(() => {
     setCurrentModule(MODULES.ROOM)
   }, [])
