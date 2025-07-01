@@ -8,8 +8,8 @@ import {
   Picker,
   PickerOption,
 } from '@nutui/nutui-react-taro'
-import { navigateTo } from '@tarojs/taro'
-import { GAME_VERSIONS, ROUTES } from '@/config/constants.ts'
+import { navigateTo, getStorageSync, setStorageSync } from '@tarojs/taro'
+import { GAME_VERSIONS, ROUTES, STORAGE_MEMBER_COUNT_KEY } from '@/config/constants.ts'
 import useCreateRoomStore from '@/pages/home/stores/useCreateRoomStore.ts'
 
 import styles from './CreateRoom.module.scss'
@@ -19,6 +19,7 @@ type GameVersionType = (typeof GAME_VERSIONS)[keyof typeof GAME_VERSIONS]
 interface CreateRoomValues {
   roomName: string
   gameVersion: GameVersionType
+  memberCount: number
 }
 
 const CreateRoom: React.FC = () => {
@@ -43,7 +44,13 @@ const CreateRoom: React.FC = () => {
     //TODO 加载组件时，获取用户昵称，生成房间名称
     console.log(values)
     setShowCreateRoomForm(false)
+    setStorageSync(STORAGE_MEMBER_COUNT_KEY, values?.memberCount)
     navigateTo({ url: ROUTES.ROOM })
+  }
+
+  // 生成初始房间人数
+  const genInitMemberCount = (): number => {
+    return getStorageSync(STORAGE_MEMBER_COUNT_KEY) || 9
   }
 
   // 选择器
@@ -100,6 +107,28 @@ const CreateRoom: React.FC = () => {
           initialValue="用户昵称的房间"
         >
           <Input placeholder="请输入房间名称" type="text" />
+        </Form.Item>
+        <Form.Item
+          label="房间人数"
+          name="memberCount"
+          rules={[
+            { required: true, message: '请输入房间人数' },
+            {
+              validator: (_rule: FormItemRuleWithoutValidator, value: number) => {
+                return value > 5
+              },
+              message: '房间人数不能小于5',
+            },
+            {
+              validator: (_rule: FormItemRuleWithoutValidator, value: number) => {
+                return value <= 15
+              },
+              message: '房间人数不能大于15',
+            },
+          ]}
+          initialValue={genInitMemberCount()}
+        >
+          <Input placeholder="请输入房间人数" type="number" />
         </Form.Item>
         <Form.Item
           label="游戏版本"

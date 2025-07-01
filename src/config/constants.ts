@@ -12,11 +12,13 @@ export const PAGES = {
   REVIEW: `pages/${MODULES.REVIEW}/index`,
 }
 
+export const SUB_PACKAGES = 'subPackages'
+
 export const ROUTES = {
   HOME: `/${PAGES.HOME}`,
-  ROOM: `/${MODULES.ROOM}/${PAGES.ROOM}`,
-  GAME: `/${MODULES.GAME}/${PAGES.GAME}`,
-  REVIEW: `/${MODULES.REVIEW}/${PAGES.REVIEW}`,
+  ROOM: `/${SUB_PACKAGES}/${MODULES.ROOM}/${PAGES.ROOM}`,
+  GAME: `/${SUB_PACKAGES}/${MODULES.GAME}/${PAGES.GAME}`,
+  REVIEW: `/${SUB_PACKAGES}/${MODULES.REVIEW}/${PAGES.REVIEW}`,
 }
 
 export const GAME_VERSIONS = {
@@ -27,3 +29,5 @@ export const GAME_VERSIONS = {
   TempleFair: '华灯初上',
   MountainsWeep: '山雨欲来',
 }
+
+export const STORAGE_MEMBER_COUNT_KEY = 'memberCount'
