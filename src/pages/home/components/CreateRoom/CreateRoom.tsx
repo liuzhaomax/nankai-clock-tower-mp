@@ -37,9 +37,7 @@ const CreateRoom: React.FC = () => {
   const [form] = Form.useForm()
 
   // 创建房间
-  const cancelCreatingRoom = () => {
-    setShowCreateRoomForm(false)
-  }
+  const cancelCreatingRoom = (): void => setShowCreateRoomForm(false)
   const confirmCreatingRoom = (values: CreateRoomValues) => {
     //TODO 发送创建房间请求，需要API
     //TODO 加载组件时，获取用户昵称，生成房间名称
@@ -49,12 +47,8 @@ const CreateRoom: React.FC = () => {
   }
 
   // 选择器
-  const cancelGameVersionPicker = () => {
-    setShowGameVersionPicker(false)
-  }
-  const openGameVersionPicker = () => {
-    setShowGameVersionPicker(true)
-  }
+  const cancelGameVersionPicker = (): void => setShowGameVersionPicker(false)
+  const openGameVersionPicker = (): void => setShowGameVersionPicker(true)
   const confirmGameVersionPicker = (
     selectedOptions: PickerOption[],
     selectedValue: (string | number)[],

@@ -7,6 +7,8 @@ import Layout from '@/components/Layout/Layout'
 import { sleep } from '@/utils/time.ts'
 import CreateRoom from '@/pages/home/components/CreateRoom/CreateRoom.tsx'
 import useCreateRoomStore from '@/pages/home/stores/useCreateRoomStore.ts'
+import JoinRoom from '@/pages/home/components/JoinRoom/JoinRoom.tsx'
+import useJoinRoomStore from '@/pages/home/stores/useJoinRoomStore'
 import useNavStore from '@/stores/useNavStore'
 import useAnimationStore from '@/pages/home/stores/useAnimationStore'
 import { MODULES } from '@/config/constants'
@@ -55,9 +57,12 @@ const Home: React.FC = () => {
   // 创建房间
   const { setShowCreateRoomForm } = useCreateRoomStore()
 
-  const onClickMainBtn = () => {
-    setShowCreateRoomForm(true)
-  }
+  const onClickMainBtn = (): void => setShowCreateRoomForm(true)
+
+  // 加入房间
+  const { setShowJoinRoomForm } = useJoinRoomStore()
+
+  const onClickJoinBtn = (): void => setShowJoinRoomForm(true)
 
   return (
     <Layout>
@@ -81,16 +86,19 @@ const Home: React.FC = () => {
         ) : (
           <></>
         )}
-        <View className={styles.mainBtnWrap}>
+        <View className={styles.btnWrap}>
           <View className={styles.mainBtnBefore}></View>
           <Button className={styles.mainBtn} type="primary" onClick={onClickMainBtn}>
             创建房间
           </Button>
           <CreateRoom />
         </View>
-        <Button className={styles.joinBtn} type="primary" onClick={onClickMainBtn}>
-          加入房间
-        </Button>
+        <View className={styles.btnWrap}>
+          <Button className={styles.joinBtn} type="primary" onClick={onClickJoinBtn}>
+            加入房间
+          </Button>
+          <JoinRoom />
+        </View>
         <View className={styles.warnHealth}>
           <p>健康游戏忠告</p>
           <p>抵制不良游戏，拒绝盗版游戏。</p>
