@@ -10,6 +10,7 @@ import {
 import useJoinRoomStore from '@/pages/home/stores/useJoinRoomStore'
 import { redirectTo } from '@tarojs/taro'
 import { ROUTES } from '@/config/constants'
+import useAnimationStore from '@/pages/home/stores/useAnimationStore'
 
 interface JoinRoomValues {
   roomId: string
@@ -18,8 +19,14 @@ interface JoinRoomValues {
 const JoinRoom: React.FC = () => {
   const { showJoinRoomForm, setShowJoinRoomForm } = useJoinRoomStore()
 
+  // 关闭蝙蝠特效
+  const { setEnableBat } = useAnimationStore()
+
   // 加入房间
-  const cancelJoiningRoom = (): void => setShowJoinRoomForm(false)
+  const cancelJoiningRoom = (): void => {
+    setShowJoinRoomForm(false)
+    setEnableBat(true)
+  }
   const confirmJoiningRoom = (values: JoinRoomValues) => {
     //TODO 发送加入房间请求，需要API
     console.log(values)

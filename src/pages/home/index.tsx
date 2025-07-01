@@ -53,16 +53,24 @@ const Home: React.FC = () => {
     }
     loop()
   }
+  // 关闭蝙蝠特效
+  const { setEnableBat } = useAnimationStore()
 
   // 创建房间
   const { setShowCreateRoomForm } = useCreateRoomStore()
 
-  const onClickMainBtn = (): void => setShowCreateRoomForm(true)
+  const onClickMainBtn = (): void => {
+    setShowCreateRoomForm(true)
+    setEnableBat(false)
+  }
 
   // 加入房间
   const { setShowJoinRoomForm } = useJoinRoomStore()
 
-  const onClickJoinBtn = (): void => setShowJoinRoomForm(true)
+  const onClickJoinBtn = (): void => {
+    setShowJoinRoomForm(true)
+    setEnableBat(false)
+  }
 
   return (
     <Layout>

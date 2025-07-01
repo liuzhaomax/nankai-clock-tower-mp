@@ -14,6 +14,7 @@ import { GameVersionType } from '@/config/types'
 import useCreateRoomStore from '@/pages/home/stores/useCreateRoomStore.ts'
 
 import styles from './CreateRoom.module.scss'
+import useAnimationStore from '@/pages/home/stores/useAnimationStore'
 
 interface CreateRoomValues {
   roomName: string
@@ -36,8 +37,14 @@ const CreateRoom: React.FC = () => {
   ]
   const [form] = Form.useForm()
 
+  // 关闭蝙蝠特效
+  const { setEnableBat } = useAnimationStore()
+
   // 创建房间
-  const cancelCreatingRoom = (): void => setShowCreateRoomForm(false)
+  const cancelCreatingRoom = (): void => {
+    setShowCreateRoomForm(false)
+    setEnableBat(true)
+  }
   const confirmCreatingRoom = (values: CreateRoomValues) => {
     //TODO 发送创建房间请求，需要API
     //TODO 加载组件时，获取用户昵称，生成房间名称

@@ -6,12 +6,6 @@
   background-image: url('../../../../assets/img/bg/in_door.jpg');
   background-size: cover;
   background-position-x: 21%;
-
-  //display: flex;
-  //flex-direction: column;
-  //flex-wrap: nowrap;
-  //justify-content: space-between;
-  //align-items: center;
 }
 
 .infoContainer {
@@ -79,9 +73,33 @@
     background-color: rgba(100, 100, 100, 0.7);
 
     --total: 15;
-    --angle: calc(((360deg / var(--total)) * var(--i)) - 90deg); // 添加 -90deg 偏移
+    --index: 0;
+    --angle: calc(((360deg / var(--total)) * var(--index)) - 90deg); // 添加 -90deg 偏移
     --negative-angle: calc(0deg - var(--angle)); // 预先计算负角度
-    transform: rotate(var(--angle)) translate(150px) rotate(var(--negative-angle)); // 旋转平移再旋转，保证内容文字是正的
+    transform: rotate(var(--angle)) translate(9.5rem) rotate(var(--negative-angle)); // 旋转平移再旋转，保证内容文字是正的
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btnText {
+    position: absolute;
+    width: 1.2rem;
+    height: 1.2rem;
+    line-height: 1rem;
+    font-weight: bold;
+    color: black;
+    background-color: rgba(255, 191, 0, 1);
+    border-radius: 50%;
+
+    --total: 15;
+    --index: 0;
+    --angle: calc(((360deg / var(--total)) * var(--index)) - 90deg); // 添加 -90deg 偏移
+    --negative-angle: calc(0deg - var(--angle)); // 预先计算负角度
+    transform: rotate(var(--angle)) translate(6.9rem) rotate(var(--negative-angle)); // 旋转平移再旋转，保证内容文字是正的
 
     display: flex;
     flex-direction: row;
@@ -91,59 +109,12 @@
   }
 }
 
-// 为每个座位设置索引
-.seat:nth-child(1) {
-  --i: 0;
-}
-.seat:nth-child(2) {
-  --i: 1;
-}
-.seat:nth-child(3) {
-  --i: 2;
-}
-.seat:nth-child(4) {
-  --i: 3;
-}
-.seat:nth-child(5) {
-  --i: 4;
-}
-.seat:nth-child(6) {
-  --i: 5;
-}
-.seat:nth-child(7) {
-  --i: 6;
-}
-.seat:nth-child(8) {
-  --i: 7;
-}
-.seat:nth-child(9) {
-  --i: 8;
-}
-.seat:nth-child(10) {
-  --i: 9;
-}
-.seat:nth-child(11) {
-  --i: 10;
-}
-.seat:nth-child(12) {
-  --i: 11;
-}
-.seat:nth-child(13) {
-  --i: 12;
-}
-.seat:nth-child(14) {
-  --i: 13;
-}
-.seat:nth-child(15) {
-  --i: 14;
-}
-
 .wait {
   width: 18rem;
   height: auto;
   min-height: 4rem;
   margin: 2rem auto;
-  background-color: rgba(255, 191, 0, 0.7);
+  background-color: rgba(255, 191, 0, 0.6);
   border: 3px solid #222;
   border-radius: 30px;
   padding: 1rem;

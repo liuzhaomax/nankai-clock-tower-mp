@@ -21,7 +21,7 @@ const Room: React.FC = () => {
   }, [])
 
   // 生成空位
-  const playerCount: string = getStorageSync(STORAGE_KEY_PLAYER_COUNT)
+  const playerCount: string = getStorageSync(STORAGE_KEY_PLAYER_COUNT) //TODO 这里应该是返回的数据
   const players: Player[] = []
   const waitings: Player[] = []
   const player: Player = {
@@ -68,7 +68,7 @@ const Room: React.FC = () => {
             <View className={styles.info}>房间人数：{playerCount}</View>
           </View>
           <View className={styles.btnWrap}>
-            <Button className={styles.btn} type="warning" onClick={startGame}>
+            <Button className={styles.btn} type="primary" onClick={startGame}>
               开始游戏
             </Button>
           </View>
@@ -77,15 +77,32 @@ const Room: React.FC = () => {
           {Array.from({ length: Number(playerCount) }).map((_, index) => (
             <View
               className={styles.seat}
+              key={index}
               data-type="seat"
               data-index={index}
-              key={index}
               style={
                 {
                   '--total': playerCount,
+                  '--index': index,
                 } as React.CSSProperties
               }
               onClick={sit}
+            >
+              空
+            </View>
+          ))}
+          {Array.from({ length: Number(playerCount) }).map((_, index) => (
+            <View
+              className={styles.btnText}
+              key={index}
+              data-type="btnText"
+              data-index={index}
+              style={
+                {
+                  '--total': playerCount,
+                  '--index': index,
+                } as React.CSSProperties
+              }
             >
               {index + 1}
             </View>
