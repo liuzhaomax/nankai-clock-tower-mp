@@ -62,7 +62,7 @@ const HeaderNav: React.FC = () => {
   //TODO 点击refresh重新获取数据 - 防抖
 
   return (
-    <NavBar className={styles.navBar} back={genBackIcon()} onBackClick={clickBack}>
+    <NavBar className={styles.navBar} fixed back={genBackIcon()} onBackClick={clickBack}>
       {currentModule === MODULES.HOME ? <></> : <Refresh className={styles.refresh} />}
       <View className={styles.title}>{genTitle()}</View>
     </NavBar>
