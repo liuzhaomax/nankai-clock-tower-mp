@@ -1,4 +1,14 @@
 .room {
   height: 79.7vh;
   margin-top: 10.3vh;
+  color: white;
+
+  background-image: url('../../../assets/img/bg/in_door.jpg');
+  background-size: cover;
+  background-position-x: 40%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }

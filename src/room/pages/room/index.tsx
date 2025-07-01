@@ -1,11 +1,12 @@
 import { View } from '@tarojs/components'
-import { useLoad } from '@tarojs/taro'
+import { navigateTo, useLoad } from '@tarojs/taro'
 import Layout from '@/components/Layout/Layout'
 import useNavStore from '@/stores/useNavStore'
 import { useEffect } from 'react'
-import { MODULES } from '@/config/constants'
+import { MODULES, ROUTES } from '@/config/constants'
 
 import styles from './room.module.scss'
+import { Button } from '@nutui/nutui-react-taro'
 
 const Room: React.FC = () => {
   useLoad(() => {
@@ -20,7 +21,15 @@ const Room: React.FC = () => {
 
   return (
     <Layout>
-      <View className={styles.room}>Room</View>
+      <View className={styles.room}>
+        Room
+        <Button
+          type="primary"
+          onClick={() => {
+            navigateTo({ url: ROUTES.HOME })
+          }}
+        ></Button>
+      </View>
     </Layout>
   )
 }
