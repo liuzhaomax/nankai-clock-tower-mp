@@ -1,5 +1,5 @@
 import { Home, Refresh, ArrowLeft, Store } from '@nutui/icons-react-taro'
-import { navigateTo, navigateBack } from '@tarojs/taro'
+import { redirectTo, navigateBack } from '@tarojs/taro'
 import { MODULES, ROUTES } from '@/config/constants'
 import { View } from '@tarojs/components'
 import styles from './HeaderNav.module.scss'
@@ -38,16 +38,16 @@ const HeaderNav: React.FC = () => {
   const clickBack = () => {
     switch (currentModule) {
       case MODULES.HOME:
-        navigateTo({ url: ROUTES.HOME })
+        redirectTo({ url: ROUTES.HOME })
         return
       case MODULES.ROOM:
-        navigateTo({ url: ROUTES.HOME })
+        redirectTo({ url: ROUTES.HOME })
         return
       case MODULES.GAME:
-        navigateTo({ url: ROUTES.HOME })
+        redirectTo({ url: ROUTES.HOME })
         return
       case MODULES.REVIEW:
-        navigateTo({ url: ROUTES.ROOM })
+        redirectTo({ url: ROUTES.ROOM })
         return
       default:
         navigateBack()

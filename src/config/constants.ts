@@ -30,4 +30,4 @@ export const GAME_VERSIONS = {
   MountainsWeep: '山雨欲来',
 }
 
-export const STORAGE_MEMBER_COUNT_KEY = 'memberCount'
+export const STORAGE_KEY_PLAYER_COUNT = 'playerCount'

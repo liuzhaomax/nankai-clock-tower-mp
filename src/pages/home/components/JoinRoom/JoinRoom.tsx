@@ -8,7 +8,7 @@ import {
   Popup,
 } from '@nutui/nutui-react-taro'
 import useJoinRoomStore from '@/pages/home/stores/useJoinRoomStore'
-import { navigateTo } from '@tarojs/taro'
+import { redirectTo } from '@tarojs/taro'
 import { ROUTES } from '@/config/constants'
 
 interface JoinRoomValues {
@@ -24,7 +24,7 @@ const JoinRoom: React.FC = () => {
     //TODO 发送加入房间请求，需要API
     console.log(values)
     setShowJoinRoomForm(false)
-    navigateTo({ url: ROUTES.ROOM })
+    redirectTo({ url: ROUTES.ROOM })
   }
 
   return (

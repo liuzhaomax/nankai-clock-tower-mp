@@ -1,13 +1,170 @@
 .room {
   height: 79.7vh;
   color: white;
+  padding: 1rem;
 
   background-image: url('../../../../assets/img/bg/in_door.jpg');
   background-size: cover;
   background-position-x: 21%;
 
+  //display: flex;
+  //flex-direction: column;
+  //flex-wrap: nowrap;
+  //justify-content: space-between;
+  //align-items: center;
+}
+
+.infoContainer {
+  height: 14vh;
+
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
   align-items: center;
+
+  .infoWrap {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .info {
+      margin: 0.2rem 0.1rem;
+    }
+  }
+
+  .btnWrap {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+
+    .btn {
+      width: 5rem;
+      height: 5rem;
+      font-size: 1.1rem;
+      line-height: 1.3rem;
+    }
+  }
+}
+
+.seatWrap {
+  width: 18rem;
+  height: 40vh;
+  margin: 2rem auto;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+
+  .btn {
+    width: 7rem;
+    height: 7rem;
+    font-size: 1.6rem;
+    border-radius: 50%;
+  }
+
+  .seat {
+    position: absolute;
+    width: 3.3rem;
+    height: 3.3rem;
+    border-radius: 50%;
+    border: 5px solid #111;
+    background-color: rgba(100, 100, 100, 0.7);
+
+    --total: 15;
+    --angle: calc(((360deg / var(--total)) * var(--i)) - 90deg); // 添加 -90deg 偏移
+    --negative-angle: calc(0deg - var(--angle)); // 预先计算负角度
+    transform: rotate(var(--angle)) translate(150px) rotate(var(--negative-angle)); // 旋转平移再旋转，保证内容文字是正的
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+// 为每个座位设置索引
+.seat:nth-child(1) {
+  --i: 0;
+}
+.seat:nth-child(2) {
+  --i: 1;
+}
+.seat:nth-child(3) {
+  --i: 2;
+}
+.seat:nth-child(4) {
+  --i: 3;
+}
+.seat:nth-child(5) {
+  --i: 4;
+}
+.seat:nth-child(6) {
+  --i: 5;
+}
+.seat:nth-child(7) {
+  --i: 6;
+}
+.seat:nth-child(8) {
+  --i: 7;
+}
+.seat:nth-child(9) {
+  --i: 8;
+}
+.seat:nth-child(10) {
+  --i: 9;
+}
+.seat:nth-child(11) {
+  --i: 10;
+}
+.seat:nth-child(12) {
+  --i: 11;
+}
+.seat:nth-child(13) {
+  --i: 12;
+}
+.seat:nth-child(14) {
+  --i: 13;
+}
+.seat:nth-child(15) {
+  --i: 14;
+}
+
+.wait {
+  width: 18rem;
+  height: auto;
+  min-height: 4rem;
+  margin: 2rem auto;
+  background-color: rgba(255, 191, 0, 0.7);
+  border: 3px solid #222;
+  border-radius: 30px;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+
+  .avatar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: rgba(255, 16, 36, 0.7);
+    margin: 0.2rem 0.1rem;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
 }
