@@ -1,14 +1,19 @@
 .navBar {
-  margin-bottom: 0;
   padding-top: 5.3vh;
-  height: 10.3vh;
+  height: 5.3vh;
   width: 100%;
   background-color: white;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .back {
   color: black;
-  margin-top: 5.3vh;
+  position: absolute;
+  left: 1rem;
 }
 
 .refresh {

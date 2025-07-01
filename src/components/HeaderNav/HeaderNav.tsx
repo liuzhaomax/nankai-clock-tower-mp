@@ -1,4 +1,3 @@
-import { NavBar } from '@nutui/nutui-react-taro'
 import { Home, Refresh, ArrowLeft, Store } from '@nutui/icons-react-taro'
 import { navigateTo, navigateBack } from '@tarojs/taro'
 import { MODULES, ROUTES } from '@/config/constants'
@@ -14,11 +13,23 @@ const HeaderNav: React.FC = () => {
       case MODULES.HOME:
         return <></>
       case MODULES.ROOM:
-        return <Home className={styles.back} size={25} />
+        return (
+          <View className={styles.back} onClick={clickBack}>
+            <Home size={25} />
+          </View>
+        )
       case MODULES.GAME:
-        return <Home className={styles.back} size={25} />
+        return (
+          <View className={styles.back} onClick={clickBack}>
+            <Home size={25} />
+          </View>
+        )
       case MODULES.REVIEW:
-        return <Store className={styles.back} size={25} />
+        return (
+          <View className={styles.back} onClick={clickBack}>
+            <Store size={25} />
+          </View>
+        )
       default:
         return <ArrowLeft className={styles.back} size={25} />
     }
@@ -62,10 +73,11 @@ const HeaderNav: React.FC = () => {
   //TODO 点击refresh重新获取数据 - 防抖
 
   return (
-    <NavBar className={styles.navBar} fixed back={genBackIcon()} onBackClick={clickBack}>
+    <View className={styles.navBar}>
+      {genBackIcon()}
       {currentModule === MODULES.HOME ? <></> : <Refresh className={styles.refresh} />}
       <View className={styles.title}>{genTitle()}</View>
-    </NavBar>
+    </View>
   )
 }
 
