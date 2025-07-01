@@ -14,8 +14,8 @@ const FooterNav: React.FC = () => {
     setActiveTab(value)
   }
 
-  const popup = (value: number) => {
-    switch (value) {
+  const popup = () => {
+    switch (activeTab) {
       case 0:
         return <Specification />
       case 1:
@@ -40,7 +40,7 @@ const FooterNav: React.FC = () => {
         <Tabbar.Item title="历史对局" icon={<Calendar />} />
         <Tabbar.Item title="我的" icon={<User />} />
       </Tabbar>
-      {popup(activeTab)}
+      {popup()}
     </>
   )
 }

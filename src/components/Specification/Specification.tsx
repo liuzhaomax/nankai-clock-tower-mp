@@ -12,9 +12,6 @@ const Specification: React.FC = () => {
   const { setEnableBat } = useAnimationStore()
   useEffect(() => {
     setEnableBat(false)
-    return () => {
-      setEnableBat(true)
-    }
   }, [])
 
   return (
