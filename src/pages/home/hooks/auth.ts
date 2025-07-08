@@ -6,10 +6,13 @@ const ROUTES = getRoutes()
 
 // 步骤1：获取puk
 const getPuk = async () => {
-  const { data } = await Taro.request({
+  const { data, statusCode, errMsg } = await Taro.request({
     url: ROUTES.BASE_URL + ROUTES.LOGIN,
     method: 'GET',
   })
+  if (statusCode !== 200) {
+    throw new Error(`服务器错误: ${statusCode}: ${errMsg}`)
+  }
   return data // puk
 }
 
@@ -27,42 +30,42 @@ const checkAuth = async (): Promise<boolean> => {
 
 // 步骤4：发送到开发者服务器
 const sendToServer = async (code: string) => {
-  const { data } = await Taro.request({
+  const { data, statusCode, errMsg } = await Taro.request({
     url: ROUTES.BASE_URL + ROUTES.LOGIN,
     method: 'POST',
     data: { code },
   })
+  if (statusCode !== 200) {
+    throw new Error(`服务器错误: ${statusCode}: ${errMsg}`)
+  }
   return data // token
 }
 
-// 完整登录流程
+// 登录流程
 export const login = async (): Promise<void> => {
-  // 1. 获取puk，并存储
-  const resPuk = Taro.getStorageSync(STORAGE_KEY.PUK) || (await getPuk())
-  if (!resPuk) return
-  Taro.setStorageSync(STORAGE_KEY.PUK, resPuk.data)
-
-  // 2. 检查本地token
+  // 1. 检查本地token
   const token = Taro.getStorageSync(STORAGE_KEY.TOKEN)
   if (token) return
+
+  // 2. 获取puk，并存储
+  const resPuk = Taro.getStorageSync(STORAGE_KEY.PUK) || (await getPuk())
+  if (!resPuk) throw new Error('Puk响应payload不存在')
+  Taro.setStorageSync(STORAGE_KEY.PUK, resPuk.data)
 
   // 3. 获取微信code
   const code = await getWxCode()
 
   // 4. 检查授权状态
   const isAuthed = await checkAuth()
-  if (!isAuthed) {
-    console.warn(new Error('需要用户主动授权'))
-    return
-  }
+  if (!isAuthed) throw new Error('需要用户主动授权')
 
   // 5. 发送到服务端
   const resToken = await sendToServer(code)
-  if (!resToken) return
+  if (!resToken) throw new Error('Token响应payload不存在')
   console.log(resToken)
 
   // 6. 存储登录态
-  Taro.setStorageSync(STORAGE_KEY.TOKEN, resToken.token)
+  Taro.setStorageSync(STORAGE_KEY.TOKEN, resToken.data)
 
   return
 }

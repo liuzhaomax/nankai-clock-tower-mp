@@ -1,4 +1,4 @@
-import { Button } from '@nutui/nutui-react-taro'
+import { Button, Dialog } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
 import { useLoad } from '@tarojs/taro'
 import { useEffect, useRef, useState } from 'react'
@@ -23,11 +23,13 @@ const Home: React.FC = () => {
   })
 
   // 静默登录
+  const [showReloginDialog, setShowReloginDialog] = useState(false)
   const loginSilently = async (): Promise<void> => {
     try {
       await login()
     } catch (err) {
       console.warn('登录失败', err)
+      setShowReloginDialog(true)
     }
   }
 
@@ -136,6 +138,19 @@ const Home: React.FC = () => {
           </a>
         </View>
       </View>
+      <Dialog
+        className={styles.relogin}
+        title="登录失败"
+        visible={showReloginDialog}
+        closeOnOverlayClick={false}
+        onConfirm={async () => {
+          await login()
+          setShowReloginDialog(false)
+        }}
+        onCancel={() => setShowReloginDialog(false)}
+      >
+        {`点击确认，重新登录\n或者取消，到“我的”重新登录`}
+      </Dialog>
     </Layout>
   )
 }
