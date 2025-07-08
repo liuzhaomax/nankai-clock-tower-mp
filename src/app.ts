@@ -1,7 +1,5 @@
 import { useEffect } from 'react'
-// import { useDidShow, useDidHide } from '@tarojs/taro'
-// 全局样式
-// import '@nutui/nutui-react-taro/dist/styles/theme-default.scss'
+import { getRoutes } from '@/config/api'
 import './app.scss'
 
 interface AppProps {
@@ -9,17 +7,12 @@ interface AppProps {
 }
 
 const App = (props: AppProps) => {
-  // 可以使用所有的 React Hooks
+  const ROUTES = getRoutes()
+
   useEffect(() => {
     console.log(`NODE_ENV: ${process.env.NODE_ENV}`)
-    console.log(`BASE_URL: ${process.env.BASE_URL}`)
+    console.log(`BASE_URL: ${ROUTES.BASE_URL}`)
   }, [])
-
-  // // 对应 onShow
-  // useDidShow(() => {})
-  //
-  // // 对应 onHide
-  // useDidHide(() => {})
 
   return props.children
 }

@@ -3,7 +3,7 @@ import { getStorageSync, redirectTo, useLoad } from '@tarojs/taro'
 import Layout from '@/components/Layout/Layout'
 import useNavStore from '@/stores/useNavStore'
 import { useEffect } from 'react'
-import { MODULES, ROUTES, STORAGE_KEY_PLAYER_COUNT } from '@/config/constants'
+import { MODULES, ROUTES, STORAGE_KEY } from '@/config/constants'
 import { Button } from '@nutui/nutui-react-taro'
 import { Player, PlayerBaseInfo, PlayerGameInfo } from '@/config/types'
 
@@ -21,7 +21,7 @@ const Room: React.FC = () => {
   }, [])
 
   // 生成空位
-  const playerCount: string = getStorageSync(STORAGE_KEY_PLAYER_COUNT) //TODO 这里应该是返回的数据
+  const playerCount: string = getStorageSync(STORAGE_KEY.PLAYER_COUNT) //TODO 这里应该是返回的数据
   const players: Player[] = []
   const waitings: Player[] = []
   const player: Player = {

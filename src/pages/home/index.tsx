@@ -12,13 +12,24 @@ import useJoinRoomStore from '@/pages/home/stores/useJoinRoomStore'
 import useNavStore from '@/stores/useNavStore'
 import useAnimationStore from '@/pages/home/stores/useAnimationStore'
 import { MODULES } from '@/config/constants'
+import { login } from '@/pages/home/hooks/auth'
 
 import styles from './home.module.scss'
 
 const Home: React.FC = () => {
   useLoad(() => {
     console.log('Home loaded.')
+    loginSilently()
   })
+
+  // 静默登录
+  const loginSilently = async (): Promise<void> => {
+    try {
+      await login()
+    } catch (err) {
+      console.log('需要用户主动授权')
+    }
+  }
 
   // 设置当前模块名，用于导航
   const { setCurrentModule } = useNavStore()

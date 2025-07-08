@@ -9,7 +9,7 @@ import {
   PickerOption,
 } from '@nutui/nutui-react-taro'
 import { redirectTo, getStorageSync, setStorageSync } from '@tarojs/taro'
-import { GAME_VERSIONS, ROUTES, STORAGE_KEY_PLAYER_COUNT } from '@/config/constants.ts'
+import { GAME_VERSIONS, ROUTES, STORAGE_KEY } from '@/config/constants.ts'
 import { GameVersionType } from '@/config/types'
 import useCreateRoomStore from '@/pages/home/stores/useCreateRoomStore.ts'
 
@@ -50,13 +50,13 @@ const CreateRoom: React.FC = () => {
     //TODO 加载组件时，获取用户昵称，生成房间名称
     console.log(values)
     setShowCreateRoomForm(false)
-    setStorageSync(STORAGE_KEY_PLAYER_COUNT, values?.playerCount)
+    setStorageSync(STORAGE_KEY.PLAYER_COUNT, values?.playerCount)
     redirectTo({ url: ROUTES.ROOM })
   }
 
   // 生成初始房间人数
   const genInitMemberCount = (): number => {
-    return getStorageSync(STORAGE_KEY_PLAYER_COUNT) || 9
+    return getStorageSync(STORAGE_KEY.PLAYER_COUNT) || 9
   }
 
   // 选择器

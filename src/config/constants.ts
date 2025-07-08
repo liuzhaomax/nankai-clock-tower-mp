@@ -1,8 +1,8 @@
-export const MODULES = {
-  HOME: 'home',
-  ROOM: 'room',
-  GAME: 'game',
-  REVIEW: 'review',
+export enum MODULES {
+  HOME = 'home',
+  ROOM = 'room',
+  GAME = 'game',
+  REVIEW = 'review',
 }
 
 export const PAGES = {
@@ -21,13 +21,17 @@ export const ROUTES = {
   REVIEW: `/${SUB_PACKAGES}/${MODULES.REVIEW}/${PAGES.REVIEW}`,
 }
 
-export const GAME_VERSIONS = {
-  TroubleBrewing: '暗流涌动',
-  BadMoonRising: '黯月初升',
-  SectsAndViolets: '教派与紫罗兰',
-  NightmareBlossoms: '梦殒春宵',
-  TempleFair: '华灯初上',
-  MountainsWeep: '山雨欲来',
+export enum GAME_VERSIONS {
+  TroubleBrewing = '暗流涌动',
+  BadMoonRising = '黯月初升',
+  SectsAndViolets = '教派与紫罗兰',
+  NightmareBlossoms = '梦殒春宵',
+  TempleFair = '华灯初上',
+  MountainsWeep = '山雨欲来',
 }
 
-export const STORAGE_KEY_PLAYER_COUNT = 'playerCount'
+export enum STORAGE_KEY {
+  PUK = 'puk',
+  TOKEN = 'token',
+  PLAYER_COUNT = 'playerCount',
+}
