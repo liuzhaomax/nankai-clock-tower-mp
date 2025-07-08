@@ -5,6 +5,7 @@ import { STORAGE_KEY } from '@/config/constants'
 
 import './app.scss'
 
+// 注册拦截器，每次请求都会读取storage拿token放header
 Taro.addInterceptor((chain) => {
   const requestParams = chain.requestParams
   const { header = {} } = requestParams
