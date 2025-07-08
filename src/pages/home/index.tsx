@@ -27,7 +27,7 @@ const Home: React.FC = () => {
     try {
       await login()
     } catch (err) {
-      console.log('需要用户主动授权')
+      console.log('登录失败', err)
     }
   }
 

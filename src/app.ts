@@ -1,6 +1,25 @@
 import { useEffect } from 'react'
 import { getRoutes } from '@/config/api'
+import Taro from '@tarojs/taro'
+import { STORAGE_KEY } from '@/config/constants'
+
 import './app.scss'
+
+Taro.addInterceptor((chain) => {
+  const requestParams = chain.requestParams
+  const { header = {} } = requestParams
+
+  const token = Taro.getStorageSync(STORAGE_KEY.TOKEN)
+
+  if (token) {
+    header['Authorization'] = token
+  }
+
+  return chain.proceed({
+    ...requestParams,
+    header,
+  })
+})
 
 interface AppProps {
   children?: React.ReactNode
