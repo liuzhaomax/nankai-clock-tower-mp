@@ -27,7 +27,7 @@ const Home: React.FC = () => {
     try {
       await login()
     } catch (err) {
-      console.log('登录失败', err)
+      console.warn('登录失败', err)
     }
   }
 
