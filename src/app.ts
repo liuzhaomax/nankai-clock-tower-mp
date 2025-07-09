@@ -11,9 +11,11 @@ Taro.addInterceptor((chain) => {
   const { header = {} } = requestParams
 
   const token = Taro.getStorageSync(STORAGE_KEY.TOKEN)
+  const userId = Taro.getStorageSync(STORAGE_KEY.USER_ID)
 
   if (token) {
     header['Authorization'] = token
+    header['user_id'] = userId
   }
 
   return chain.proceed({

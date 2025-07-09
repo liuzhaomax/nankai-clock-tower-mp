@@ -33,5 +33,6 @@ export enum GAME_VERSIONS {
 export enum STORAGE_KEY {
   PUK = 'puk',
   TOKEN = 'token',
+  USER_ID = 'userId',
   PLAYER_COUNT = 'playerCount',
 }
