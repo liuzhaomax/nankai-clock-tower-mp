@@ -34,5 +34,6 @@ export enum STORAGE_KEY {
   PUK = 'puk',
   TOKEN = 'token',
   USER_ID = 'userId',
+  AUTH = 'auth',
   PLAYER_COUNT = 'playerCount',
 }

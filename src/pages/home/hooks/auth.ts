@@ -12,7 +12,7 @@ const getPuk = async () => {
     method: 'GET',
   })
   if (statusCode !== 200) {
-    throw new Error(`服务器错误: ${statusCode}: ${errMsg}`)
+    throw new Error(`API错误: ${statusCode}: ${errMsg}`)
   }
   return data // puk
 }
@@ -40,7 +40,7 @@ const sendToServer = async (code: string) => {
     data: { code: rsa.encrypt(code) },
   })
   if (statusCode !== 200) {
-    throw new Error(`服务器错误: ${statusCode}: ${errMsg}`)
+    throw new Error(`API错误: ${statusCode}: ${errMsg}`)
   }
   return data // token
 }
@@ -74,6 +74,24 @@ export const login = async (): Promise<void> => {
   }
 
   return
+}
+
+// 获取用户头像昵称
+export interface User {
+  userId: string
+  avatar: string
+  nickName: string
+}
+export const getUserUser = async (): Promise<User> => {
+  const ROUTES = getRoutes()
+  const { data, statusCode, errMsg } = await Taro.request({
+    url: ROUTES.BASE_URL + ROUTES.USER_USER,
+    method: 'GET',
+  })
+  if (statusCode !== 200) {
+    throw new Error(`API错误: ${statusCode}: ${errMsg}`)
+  }
+  return data.data
 }
 
 // export const logout = (): void => {

@@ -1,6 +1,6 @@
-import { Button, Dialog } from '@nutui/nutui-react-taro'
+import { Button, Dialog, Radio } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
-import { useLoad } from '@tarojs/taro'
+import Taro, { useLoad } from '@tarojs/taro'
 import { useEffect, useRef, useState } from 'react'
 import ICP from '@/assets/img/ICP.png'
 import Layout from '@/components/Layout/Layout'
@@ -11,20 +11,24 @@ import JoinRoom from '@/pages/home/components/JoinRoom/JoinRoom.tsx'
 import useJoinRoomStore from '@/pages/home/stores/useJoinRoomStore'
 import useNavStore from '@/stores/useNavStore'
 import useAnimationStore from '@/pages/home/stores/useAnimationStore'
-import { MODULES } from '@/config/constants'
-import { login } from '@/pages/home/hooks/auth'
+import { MODULES, STORAGE_KEY } from '@/config/constants'
+import { getUserUser, login } from '@/pages/home/hooks/auth'
+import useUserStore from '@/stores/useUserStore'
 
 import styles from './home.module.scss'
 
 const Home: React.FC = () => {
-  useLoad(() => {
+  useLoad(async () => {
     console.log('Home loaded.')
-    loginSilently()
+    await loginSilently()
+    await getUser()
+    console.log('User loaded.')
   })
 
   // 静默登录
   const [showReloginDialog, setShowReloginDialog] = useState(false)
   const loginSilently = async (): Promise<void> => {
+    if (Taro.getStorageSync(STORAGE_KEY.TOKEN)) return
     try {
       await login()
     } catch (err) {
@@ -32,6 +36,31 @@ const Home: React.FC = () => {
       setShowReloginDialog(true)
     }
   }
+
+  // 获取用户头像昵称（非微信api）
+  const { avatar, setAvatar } = useUserStore()
+  const { nickName, setNickName } = useUserStore()
+  const getUser = async () => {
+    const hasAuth = checkAuth()
+    if (!hasAuth) return
+    if (avatar && nickName) return
+    try {
+      const res = await getUserUser()
+      setAvatar(res?.avatar)
+      setNickName(res?.nickName)
+    } catch (e) {
+      console.error(`更新头像昵称失败：${e}`)
+    }
+  }
+  const checkAuth = (): boolean => {
+    if (Taro.getStorageSync(STORAGE_KEY.AUTH)) return true
+    setShowAuthDialog(true)
+    return false
+  }
+
+  // 授权
+  const [showAuthDialog, setShowAuthDialog] = useState(false)
+  const [authRadioChecked, setAuthRadioChecked] = useState(false)
 
   // 设置当前模块名，用于导航
   const { setCurrentModule } = useNavStore()
@@ -150,6 +179,24 @@ const Home: React.FC = () => {
         onCancel={() => setShowReloginDialog(false)}
       >
         {`点击确认，重新登录\n或者取消，到“我的”重新登录`}
+      </Dialog>
+      <Dialog
+        className={styles.auth}
+        title="用户授权确认"
+        visible={showAuthDialog}
+        closeOnOverlayClick={false}
+        hideCancelButton
+        onConfirm={async () => {
+          if (!authRadioChecked) return
+          Taro.setStorageSync(STORAGE_KEY.AUTH, '1')
+          await getUser()
+          setShowAuthDialog(false)
+        }}
+      >
+        {`您同意我们将您的头像用于识别用户和展示个人信息功能，并允许公开访问。\n\n点击确认，进行授权\n\n`}
+        <Radio checked={authRadioChecked} onChange={() => setAuthRadioChecked(true)}>
+          我已阅读并同意上述内容
+        </Radio>
       </Dialog>
     </Layout>
   )
