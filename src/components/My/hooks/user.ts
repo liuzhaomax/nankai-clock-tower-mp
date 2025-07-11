@@ -2,7 +2,10 @@ import { getRoutes } from '@/config/api'
 import Taro from '@tarojs/taro'
 import { STORAGE_KEY } from '@/config/constants'
 
-export const postAvatar = async (avatar: string) => {
+interface AvatarRes {
+  avatar: string
+}
+export const postAvatar = async (avatar: string): Promise<AvatarRes> => {
   const ROUTES = getRoutes()
   const token = Taro.getStorageSync(STORAGE_KEY.TOKEN)
   const userId = Taro.getStorageSync(STORAGE_KEY.USER_ID)
@@ -22,7 +25,10 @@ export const postAvatar = async (avatar: string) => {
   return JSON.parse(data).data
 }
 
-export const patchNickName = async (nickName: string) => {
+interface NickNameRes {
+  nickName: string
+}
+export const patchNickName = async (nickName: string): Promise<NickNameRes> => {
   const ROUTES = getRoutes()
   const { data, statusCode, errMsg } = await Taro.request({
     url: ROUTES.BASE_URL + ROUTES.USER_NICK_NAME,
