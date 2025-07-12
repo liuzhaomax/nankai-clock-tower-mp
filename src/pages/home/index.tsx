@@ -1,4 +1,5 @@
-import { Button, Dialog, Radio } from '@nutui/nutui-react-taro'
+import { Button, Dialog, Radio, Toast } from '@nutui/nutui-react-taro'
+import { LogisticsError } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
 import Taro, { useLoad } from '@tarojs/taro'
 import { useEffect, useRef, useState } from 'react'
@@ -61,6 +62,7 @@ const Home: React.FC = () => {
   // 授权
   const [showAuthDialog, setShowAuthDialog] = useState(false)
   const [authRadioChecked, setAuthRadioChecked] = useState(false)
+  const [showAuthToast, setShowAuthToast] = useState(false)
 
   // 设置当前模块名，用于导航
   const { setCurrentModule } = useNavStore()
@@ -187,7 +189,10 @@ const Home: React.FC = () => {
         closeOnOverlayClick={false}
         hideCancelButton
         onConfirm={async () => {
-          if (!authRadioChecked) return
+          if (!authRadioChecked) {
+            setShowAuthToast(true)
+            return
+          }
           Taro.setStorageSync(STORAGE_KEY.AUTH, '1')
           await getUser()
           setShowAuthDialog(false)
@@ -198,6 +203,16 @@ const Home: React.FC = () => {
           我已阅读并同意上述内容
         </Radio>
       </Dialog>
+      <Toast
+        content="请阅读并同意授权"
+        duration={2}
+        icon={<LogisticsError />}
+        title="未授权"
+        visible={showAuthToast}
+        onClose={() => {
+          setShowAuthToast(false)
+        }}
+      />
     </Layout>
   )
 }
