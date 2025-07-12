@@ -209,9 +209,7 @@ const Home: React.FC = () => {
         icon={<LogisticsError />}
         title="未授权"
         visible={showAuthToast}
-        onClose={() => {
-          setShowAuthToast(false)
-        }}
+        onClose={() => setShowAuthToast(false)}
       />
     </Layout>
   )
