@@ -7,6 +7,11 @@ export const getRoutes = () => {
     USER_AVATAR: '/user/avatar',
     USER_NICK_NAME: '/user/nickName',
     USER_USER: '/user/user',
+    GROUP: {
+      CREATE: '/group',
+      JOIN: '/group/join',
+      QUIT: '/group/quit',
+    },
   }
   const prodRoutes = {
     BASE_URL: `https://blood.liuzhaomax.cn`,
@@ -14,6 +19,11 @@ export const getRoutes = () => {
     USER_AVATAR: '/user/avatar',
     USER_NICK_NAME: '/user/nickName',
     USER_USER: '/user/user',
+    GROUP: {
+      CREATE: '/group',
+      JOIN: '/group/join',
+      QUIT: '/group/quit',
+    },
   }
   switch (ENV) {
     case 'development':

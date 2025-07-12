@@ -81,6 +81,12 @@ export interface User {
   userId: string
   avatar: string
   nickName: string
+  groups: Group[]
+}
+interface Group {
+  id: number
+  name: string
+  score: number
 }
 export const getUserUser = async (): Promise<User> => {
   const ROUTES = getRoutes()

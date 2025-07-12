@@ -1,0 +1,15 @@
+.popup {
+  height: 57vh;
+  border-top: 3px solid #ff1024;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.submitBtn {
+  height: 40px;
+}

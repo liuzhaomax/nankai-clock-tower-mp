@@ -41,6 +41,7 @@ const Home: React.FC = () => {
   // 获取用户头像昵称（非微信api）
   const { avatar, setAvatar } = useUserStore()
   const { nickName, setNickName } = useUserStore()
+  const { setGroups } = useUserStore()
   const getUser = async () => {
     const hasAuth = checkAuth()
     if (!hasAuth) return
@@ -49,8 +50,13 @@ const Home: React.FC = () => {
       const res = await getUserUser()
       setAvatar(res?.avatar)
       setNickName(res?.nickName)
+      setGroups(res?.groups)
     } catch (e) {
       console.error(`更新头像昵称失败：${e}`)
+      // getUserUser是进入首页就会发送的请求，且需要权限访问，
+      // 服务器重启后，此请求必失败，失败则清空storage，再登录刷新token
+      Taro.clearStorageSync()
+      await login()
     }
   }
   const checkAuth = (): boolean => {
@@ -180,7 +186,7 @@ const Home: React.FC = () => {
         }}
         onCancel={() => setShowReloginDialog(false)}
       >
-        {`点击确认，重新登录\n或者取消，到“我的”重新登录`}
+        {`点击确认，重新登录\n\n或者取消，到“我的”重新登录`}
       </Dialog>
       <Dialog
         className={styles.auth}

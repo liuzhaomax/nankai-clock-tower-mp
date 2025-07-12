@@ -107,7 +107,7 @@ const CreateRoom: React.FC = () => {
               validator: (_rule: FormItemRuleWithoutValidator, value: string) => {
                 return value?.length >= 2
               },
-              message: '房间名称必须不小于2个字',
+              message: '房间名称不小于2个字',
             },
           ]}
           initialValue="用户昵称的房间"
